@@ -46,8 +46,16 @@
           </div>
         </div>
       </div>
-       <!--<div class="section" id="page2">
-       <div class="page2nav">
+      <div class="section" id="page2">
+		<div class="page2nav">
+          <ul class="brclearfix" width="100%">
+            <li @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}">法币交易</li>
+		    <li @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}">广告发布</li>
+            <li @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}">我的广告</li>
+            <li @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}">币币交易</li>
+		  </ul>
+        </div>
+       <!-- <div class="page2nav">
           <ul class="brclearfix">
             <li v-show="!(index==3&&!isLogin)" v-for="(item,index) in indexBtn" @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}" :key="index">{{item.text}}</li>
           </ul>
@@ -60,8 +68,8 @@
         <div class="ptjy">
           <Table v-if="pane==='favor'" :columns="favorColumns" :data="dataIndex" class="tables" :disabled-hover="true" :loading="loading"></Table>
           <Table v-else :columns="coins.columns" :data="dataIndex" class="tables" :disabled-hover="true" :loading="loading"></Table>
-        </div>
-      </div>-->
+        </div>-->
+      </div> 
      <!-- <div class="section" id="page4">
         <ul>
           <li>
