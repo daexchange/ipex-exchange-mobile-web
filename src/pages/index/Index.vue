@@ -26,7 +26,6 @@
         </Carousel>
       </div>
 
-
       <div id="pagetips">
         <div class="topnav">
           <div class="carl">
@@ -47,12 +46,12 @@
           </div>
         </div>
       </div>
-      <div class="section" id="page2">
-        <!--<div class="page2nav">
+       <!--<div class="section" id="page2">
+       <div class="page2nav">
           <ul class="brclearfix">
             <li v-show="!(index==3&&!isLogin)" v-for="(item,index) in indexBtn" @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}" :key="index">{{item.text}}</li>
           </ul>
-        </div>-->
+        </div>
         <div class="tabPage">
           <Tabs v-model="pane" @on-click="changeTab" :animated="false">
             <TabPane v-for="(item,index) in baseSymbols" :key="index" :name="item.name" :label="item.label"></TabPane>
@@ -62,8 +61,8 @@
           <Table v-if="pane==='favor'" :columns="favorColumns" :data="dataIndex" class="tables" :disabled-hover="true" :loading="loading"></Table>
           <Table v-else :columns="coins.columns" :data="dataIndex" class="tables" :disabled-hover="true" :loading="loading"></Table>
         </div>
-      </div>
-      <div class="section" id="page4">
+      </div>-->
+     <!-- <div class="section" id="page4">
         <ul>
           <li>
             <div><img src="../../assets/images/feature_safe.png" alt=""></div>
@@ -84,7 +83,7 @@
       </div>
       <div class="section" id="page5">
         <div class="phone_image"></div>
-        <!--<ul class="download">
+        <ul class="download">
           <li class="qrcode">扫描二维码，下载APP</li>
           <li class="wrapper">
             <div class="download_app">
@@ -117,8 +116,8 @@
           &lt;!&ndash;<li>&ndash;&gt;
           &lt;!&ndash;<a @click="donwload(1)"><img src="../../assets/images/anddown.png" alt=""></a>&ndash;&gt;
           &lt;!&ndash;</li>&ndash;&gt;
-        </ul>-->
-      </div>
+        </ul>
+      </div>-->
     </div>
     <div id="onlineservice">
       <a href="http://kefu.caymanex.pro:80/im/text/15FwEk.html" target="_blank"></a>

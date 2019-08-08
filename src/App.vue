@@ -19,15 +19,15 @@
                   <router-link to="/otc/trade/ETH">
                     <MenuItem name="nav-otc">{{$t("header.otc")}}</MenuItem>
                   </router-link>
-<!--                  <router-link to="">
+			   <!-- <router-link to="">
                     <MenuItem name="nav-appdownload">{{$t("header.appdownload")}}</MenuItem>
-                  </router-link>-->
+                  </router-link>
                   <router-link to="/help">
                     <MenuItem name="nav-uc">{{$t("header.help")}}</MenuItem>
                   </router-link>
                   <router-link to="/notice">
                     <MenuItem name="nav-service">{{$t("header.service")}}</MenuItem>
-                  </router-link>
+                  </router-link> --> 
                 </Submenu>
               </Menu>
             </div>
@@ -92,16 +92,16 @@
       <router-view v-if="isRouterAlive"></router-view>
       <!-- </div> -->
     </div>
-    <div class="footer">
+   <!-- <div class="footer">
       <div class="footer_content">
         <div class="footer_left">
           <img src="./assets/images/small_logo.svg" style="margin:0"></img>
-          <!-- <h3>Caymanex.Pro</h3> -->
+           <h3>Caymanex.Pro</h3> 
           <p>{{$t("footer.gsmc")}}</p>
           <p>Copyright © 2019 - 2020&nbsp;&nbsp;</p>
         </div>
         <div class="footer_right">
-          <ul>
+         <ul>
             <li class="footer_title">
               <span>{{$t("footer.gsjj")}}</span>
             </li>
@@ -120,7 +120,7 @@
               <router-link to="/helplist?cate=1&cateTitle=常见问题">{{$t("footer.cjwt")}}</router-link>
             </li>
           </ul>
-          <!-- <ul>
+          <ul>
             <li class="footer_title">
               <span>{{$t("footer.ptsm")}}</span>
             </li>
@@ -133,12 +133,12 @@
             <li>
               <router-link to="/about-fee">{{$t("footer.fltk")}}</router-link>
             </li>
-          </ul> -->
+          </ul> 
           <ul>
-            <li class="footer_title">
+             <li class="footer_title">
               <span>{{$t("footer.lxwm")}}</span>
             </li>
-<!--            <li class="wechatclick">
+            <li class="wechatclick">
               <poptip width="200">
                 <a href="javascript:;" class="wechat">客服邮箱</a>
                 <div slot="content">
@@ -148,11 +148,11 @@
             </li>-->
             <!-- <li>
               <a href="https://0.plus/bihuoguanfang" target="_blank">{{$t('footer.biyong')}}</a>
-            </li> -->
+            </li> 
           </ul>
         </div>
       </div>
-    </div>
+    </div>-->
   </div>
 </template>
 <script>
