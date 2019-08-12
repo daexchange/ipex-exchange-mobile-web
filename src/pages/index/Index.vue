@@ -48,11 +48,19 @@
       </div>
       <div class="section" id="page2">
 		<div class="page2nav">
-          <ul class="brclearfix" width="100%">
-            <li @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}">法币交易</li>
-		    <li @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}">广告发布</li>
-            <li @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}">我的广告</li>
-            <li @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}">币币交易</li>
+          <ul class="brclearfix"style="width: 100%; padding: 1em 0;">
+            <li @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}">
+              <a href=" "><img src="../../assets/images/homeicon-fabijiaoyi.svg" ><span>法币交易</span></a>
+            </li>
+		    <li @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}">
+              <a href=" "><img src="../../assets/images/homeicon-fabuguanggao.svg" ><span>广告发布</span></a>
+            </li>
+            <li @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}">
+              <a href=" "><img src="../../assets/images/homeicon-wodeguanggao.svg" ><span>我的广告</span></a>
+            </li>
+            <li @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}">
+              <a href=" "><img src="../../assets/images/homeicon-bibijiaoyi.svg" ><span>币币交易</span></a>
+            </li>
 		  </ul>
         </div>
        <!-- <div class="page2nav">
@@ -1059,7 +1067,8 @@ export default {
                 ? "+" + (resp[i].chg * 100).toFixed(2) + "%"
                 : (resp[i].chg * 100).toFixed(2) + "%";
             coin.coin = resp[i].symbol.split("/")[0];
-            coin.base = resp[i].symbol.split("/")[1];
+            coin.base = resp[i].symbol.spl
+            it("/")[1];
             coin.href = (coin.coin + "_" + coin.base).toLowerCase();
             coin.isFavor = false;
             this.coins._map[coin.symbol] = coin;
@@ -1183,7 +1192,7 @@ export default {
 
 #pagetips {
   background: #0b1520;
-  padding: 0 14%;
+  padding: 0 5%;
   overflow: hidden;
   .topnav {
     width: 100%;
@@ -1329,28 +1338,41 @@ export default {
   background: #192330;
   height: auto;
   min-height: 320px;
-  padding: 40px 14%;
+ /* padding: 40px 14%;*/
   .page2nav {
     line-height: 40px;
     font-size: 20px;
     .brclearfix {
       li {
         float: left;
+        width: 25%;
         cursor: pointer;
         color: #fff;
-        background: #192330;
+      /*  background: #192330;*/
         list-style: none;
-        font-size: 16px;
-        padding: 0 30px;
+        font-size: 0.12rem;
+        text-align: center;
+        /*padding: 0 30px;*/
         -moz-box-shadow: 2px 2px 5px transparent, -2px -2px 4px transparent;
         -webkit-box-shadow: 2px 2px 5px transparent, -2px -2px 4px transparent;
         box-shadow: 2px 2px 5px transparent, -2px -2px 4px transparent;
-        &:hover {
+
+        img{
+          display: block;
+          margin: 0 auto;
+          width: 1.8rem;
+        }
+        span{
+          display: block;
+          margin-top: 0.5rem;
+          line-height: 1rem;
+        }
+        a, &:hover {
           color: #f0a70a;
         }
       }
       li.active {
-        background: #27313e;
+       /* background: #27313e;*/
         color: #f0a70a;
         position: relative;
       }

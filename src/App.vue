@@ -7,7 +7,7 @@
           </router-link>
           <div class="layout-ceiling-main">
             <!-- 导航条 -->
-            <div class="header_nav">
+           <!-- <div class="header_nav">
               <Menu :active-name="activeNav" width="auto" :open-names="['1']">
                 <Submenu name="1">
                   <router-link to="/">
@@ -19,18 +19,10 @@
                   <router-link to="/otc/trade/ETH">
                     <MenuItem name="nav-otc">{{$t("header.otc")}}</MenuItem>
                   </router-link>
-			   <!-- <router-link to="">
-                    <MenuItem name="nav-appdownload">{{$t("header.appdownload")}}</MenuItem>
-                  </router-link>
-                  <router-link to="/help">
-                    <MenuItem name="nav-uc">{{$t("header.help")}}</MenuItem>
-                  </router-link>
-                  <router-link to="/notice">
-                    <MenuItem name="nav-service">{{$t("header.service")}}</MenuItem>
-                  </router-link> --> 
+
                 </Submenu>
               </Menu>
-            </div>
+            </div>-->
             <div class="rr">
               <!-- 判断是否登录 -->
               <!-- 登录 -->
@@ -68,7 +60,7 @@
                 </Menu>
               </div>
               <!--国际化-->
-              <div class="changelanguage">
+              <!--<div class="changelanguage">
                 <div class="languagelogo">
                   <img src="./assets/images/change_language.png"  style="width: 20px; height: 20px;" alt="">
                 </div>
@@ -82,7 +74,7 @@
                     <DropdownItem v-else name="cn">简体中文</DropdownItem>
                   </DropdownMenu>
                 </Dropdown>
-              </div>
+              </div>-->
             </div>
           </div>
         </div>
@@ -430,12 +422,12 @@ export default {
         .layout-logo {
           /*width: 132px;*/
           /*height: 38px;*/
-          width: 150px;
-          height: 48px;
+          width: 70px;
+          height: 28px;
           background: url(./assets/images/logo.svg) no-repeat;
           background-size: 100% 100%;
-          float: left;
-          position: absolute;
+          /*float: left;
+          position: absolute;*/
           z-index: 10;
         }
         .layout-ceiling-main {
