@@ -1,7 +1,7 @@
 <template>
   <div :class="pageView">
     <div class="layout">
-        <div class="layout-ceiling" style="background-color: rgb(20,30,43)">
+        <div class="layout-ceiling" style="background-color: rgb(20,30,43); display: inline-flex; width: 100%;">
           <router-link to="/">
             <div class="layout-logo"></div>
           </router-link>
@@ -51,10 +51,10 @@
                 <Menu active-name11="1-1" width="auto" :open-names="['2']">
                   <Submenu name="2" id="login_register_theme">
                     <router-link to="/login" id="login">
-                      <MenuItem name="1-1" style="color:#fff">{{$t("common.login")}}</MenuItem>
+                      <MenuItem name="1-1" style="padding-right: 6px; color: #b7c2ce;">{{$t("common.login")}}</MenuItem>
                     </router-link>
                     <router-link to="/register" id="register">
-                      <MenuItem name="1-2">{{$t("common.register")}}</MenuItem>
+                      <MenuItem name="1-2" style=" color: #b7c2ce;">{{$t("common.register")}}</MenuItem>
                     </router-link>
                   </Submenu>
                 </Menu>
@@ -431,9 +431,9 @@ export default {
           z-index: 10;
         }
         .layout-ceiling-main {
-          height: 50px;
+     /*     height: 50px;
           line-height: 50px;
-          margin-left: 128px;
+          margin-left: 128px;*/
           .header_nav {
             li.ivu-menu-submenu.ivu-menu-item-active.ivu-menu-opened.ivu-menu-child-item-active {
               background: none;
@@ -485,13 +485,14 @@ export default {
               #login,
               #register {
                 display: inline-block;
-                width: 80px;
                 height: 100%;
                 text-align: center;
+               /* width: 80px;
                 background: #f0a70a;
-                line-height: 25px;
                 border-radius: 25px;
                 margin-left: 20px;
+                line-height: 30px;*/
+
                 box-sizing: border-box;
                 li {
                   height: 100%;
@@ -503,10 +504,10 @@ export default {
                   }
                 }
               }
-              #register {
+            /*  #register {
                 background: none;
                 border: 1px solid #fff;
-              }
+              }*/
               #login .ivu-menu-item-active:not(.ivu-menu-submenu) {
                 color: #fff;
               }
@@ -646,9 +647,9 @@ export default {
           position: relative;
         }
         .layout-ceiling-main {
-          height: 50px;
+        /*  height: 50px;
           line-height: 50px;
-          margin-left: 128px;
+          margin-left: 128px;*/
           .header_nav {
             li.ivu-menu-submenu.ivu-menu-item-active.ivu-menu-opened.ivu-menu-child-item-active {
               background: #141e2b;
@@ -1035,14 +1036,15 @@ body {
   color: #9ea7b4;
 }
 
-.layout-ceiling-main {
+/*.layout-ceiling-main {
   height: 50px;
   line-height: 50px;
   margin-left: 128px;
-}
+}*/
 
 .layout-ceiling-main .rr {
   float: right;
+  line-height: 30px;
 }
 
 .layout-ceiling-main .ivu-menu-vertical .ivu-menu-item,
@@ -1055,13 +1057,13 @@ body {
 }
 
 .layout-ceiling-main a {
-  color: #fff;
+  color: #b7c2ce;
   display: inline-block;
-  line-height: 40px;
+ /* line-height: 40px;*/
   height: 40px;
   text-align: center;
-  margin-left: 32px;
-  /*padding: 0 15px;*/
+  /*margin-left: 32px;
+  padding: 0 15px;*/
 }
 
 .header_nav {

@@ -48,7 +48,7 @@
       </div>
       <div class="section" id="page2">
 		<div class="page2nav">
-          <ul class="brclearfix"style="width: 100%; padding: 1em 0;">
+          <ul class="brclearfix"style="width: 100%; padding: 0.5em 0;">
             <li @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}">
               <a href=" "><img src="../../assets/images/homeicon-fabijiaoyi.svg" ><span>法币交易</span></a>
             </li>
@@ -1337,8 +1337,8 @@ export default {
 #page2 {
   background: #192330;
   height: auto;
-  min-height: 320px;
- /* padding: 40px 14%;*/
+  /* min-height: 320px;
+  padding: 40px 14%;*/
   .page2nav {
     line-height: 40px;
     font-size: 20px;
