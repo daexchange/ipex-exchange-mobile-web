@@ -59,6 +59,9 @@
                   </Submenu>
                 </Menu>
               </div>
+                <a style="display: block;display: block; float: right; height: 30px; width: 30px; margin-left: 12px; ">
+                  <img src="./assets/images/nav_manu.svg" style="height: 20px; width: 20px;text-align: center; vertical-align: middle;">
+                </a>
               <!--国际化-->
               <!--<div class="changelanguage">
                 <div class="languagelogo">

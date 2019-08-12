@@ -1462,6 +1462,17 @@ export default {
     }
   }
 }
+#page1{
+
+  .carousel-item {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 100%;
+    width: 100%;
+    padding-top: 25%;
+    height: 150px;
+  }
+}
 </style>
 
 
@@ -1496,14 +1507,6 @@ export default {
   /* color: #fff; */
 }
 
-.carousel-item {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% auto;
-  width: 100%;
-  padding-top: 25%;
-  height: 0px;
-}
 
 .demo-carousel1 {
   /* background: url(../../assets/images/banner1.jpg) no-repeat center; */

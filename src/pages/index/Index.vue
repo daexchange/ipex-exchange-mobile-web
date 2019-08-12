@@ -19,8 +19,10 @@
 
         <Carousel v-else autoplay :arrow="showArrow" :autoplay-speed="speed" v-model="valueCal">
           <CarouselItem v-for="(item,index) in picList" :key="index">
-          <div :style="'background-image: url('+item.url+')'" class="carousel-item">
-            <a v-show="item.linkUrl&&item.linkUrl!=' '&&item.linkUrl!='1'" style="display:block;width:100%;height: 100%;" :href="item.linkUrl" target="_blank"></a>
+          <div class="carousel-item"><!--:style="'background-image: url('+item.url+')'" -->
+            <a v-show="item.linkUrl&&item.linkUrl!=' '&&item.linkUrl!='1'" style="display:block;width:100%;height: 100%;" :href="item.linkUrl" target="_blank">
+              <img src="../../assets/images/item.url01.png" >
+            </a>
           </div>
         </CarouselItem>
         </Carousel>
@@ -1569,9 +1571,9 @@ export default {
   clear: both;
 }
 
-#fullpage {
+/*#fullpage {
   background: #fff;
-}
+}*/
 
 .section {
   /* height: 574px; */
@@ -1579,13 +1581,13 @@ export default {
   /* color: #fff; */
 }
 
-.carousel-item {
+.carousel-item  a img{
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 100% auto;
+  background-size: auto 100%;
   width: 100%;
-  padding-top: 25%;
-  height: 0px;
+/*  padding-top: 25%;*/
+  height: 150px;
 }
 
 .demo-carousel1 {
