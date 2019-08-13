@@ -155,6 +155,8 @@ export default {
   data() {
     let self = this;
     return {
+      choseBtn: 0,
+      index: 0,
       pane: 'usdt',
       baseSymbols: [],
       loading: false,
