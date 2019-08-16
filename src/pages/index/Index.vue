@@ -65,13 +65,14 @@
             </li>
 		  </ul>
         </div>
-        <div class="page2nav">
+        <hr style="border-color: #4e5b85;">
+        <!--<div class="page2nav">
           <ul class="brclearfix">
             <li v-show="!(index==3&&!isLogin)" v-for="(item,index) in indexBtn" @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}" :key="index">{{item.text}}</li>
           </ul>
-        </div>
+        </div>-->
         <div class="tabPage">
-          <Tabs v-model="pane" @on-click="changeTab" :animated="false">
+          <Tabs v-model="pane" @on-click="changeTab" :animated="false" size="small">
             <TabPane v-for="(item,index) in baseSymbols" :key="index" :name="item.name" :label="item.label"></TabPane>
           </Tabs>
         </div>
@@ -79,7 +80,7 @@
           <Table v-if="pane==='favor'" :columns="favorColumns" :data="dataIndex" class="tables" :disabled-hover="true" :loading="loading"></Table>
           <Table v-else :columns="coins.columns" :data="dataIndex" class="tables" :disabled-hover="true" :loading="loading"></Table>
         </div>
-      </div> 
+      </div>
      <!-- <div class="section" id="page4">
         <ul>
           <li>
@@ -157,7 +158,7 @@ export default {
     return {
       choseBtn: 0,
       index: 0,
-      pane: 'usdt',
+      pane: 'eth',
       baseSymbols: [],
       loading: false,
       // progress: 0,
@@ -451,56 +452,6 @@ export default {
         favor: [],
         columns: [
           {
-            title: self.$t("service.favor"),
-            align: "center",
-            key: "collection",
-            width: 60,
-            // renderHeader: (h, params) => {
-            // return h("Icon", {
-            //   props: {
-            //     color: "#f0a70a",
-            //     size: "18",
-            //     type: "android-star-outline"
-            //   }
-            // });
-            // },
-            render: (h, params) => {
-              let flag = this.isLogin;
-              return h("Icon", {
-                props: {
-                  color: "#f0a70a",
-                  size: "18",
-                  type: params.row.isFavor
-                    ? "ios-star"
-                    : "ios-star-outline"
-                },
-                nativeOn: {
-                  click: (event) => {
-                    if (this.isLogin) {
-                      event.stopPropagation(); //阻止事件冒泡
-                      if (
-                        event.currentTarget.className ==
-                        "ivu-icon ivu-icon-ios-star"
-                      ) {
-                        // 解除收藏
-                        this.cancelCollect(params.index, params.row);
-                        event.currentTarget.className ==
-                          "ivu-icon ivu-icon-ios-star-outline";
-                      } else {
-                        // 收藏
-                        this.collect(params.index, params.row);
-                        event.currentTarget.className =
-                          "ivu-icon ivu-icon-ios-star";
-                      }
-                    } else {
-                      this.$Message.warning("请先登录");
-                    }
-                  }
-                }
-              });
-            }
-          },
-          {
             title: self.$t("service.COIN"),
             align: "center",
             key: "coin",
@@ -624,38 +575,6 @@ export default {
               );
             }
           },
-          {
-            title: self.$t("service.high"),
-            align: "center",
-            key: "high",
-            render: (h, params) => {
-              return h("div", {}, params.row.high);
-            }
-          },
-          {
-            title: self.$t("service.low"),
-            align: "center",
-            key: "high",
-            render: (h, params) => {
-              return h("div", {}, params.row.low);
-            }
-          },
-          {
-            title: self.$t("service.ExchangeNum"),
-            align: "center",
-            key: "volume",
-            // minWidth: 110,
-            sortable: true,
-            sortMethod: function(a, b, type) {
-              let a1 = parseFloat(a);
-              let b1 = parseFloat(b);
-              if (type == "asc") {
-                return a1 - b1;
-              } else {
-                return b1 - a1;
-              }
-            }
-          },
           // {
           //   title: self.$t("service.OpenPrice"),
           //   align: "center",
@@ -672,79 +591,6 @@ export default {
           //     }
           //   }
           // },
-          {
-            title: self.$t("service.PriceTrend"),
-            align: "center",
-            render: function(h, params) {
-              let valus = null;
-              let len = params.row.trend.length;
-              valus =
-                len > 0
-                  ? params.row.trend
-                  : [
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0
-                    ];
-              return h(SvgLine, {
-                props: {
-                  values: valus,
-                  rose: params.row.rose,
-                  width: 100,
-                  height: 40
-                }
-              });
-            }
-          },
-          {
-            title: self.$t("service.Exchange"),
-            align: "center",
-            key: "buyBtn",
-            width: 60,
-            // minWidth: 60,
-            render: function(h, params) {
-              return h("div", [
-                h("img", {
-                  attrs: {
-                    src: require("../../assets/images/to_del.png")
-                  },
-                  style: {
-                    width: "18px",
-                    cursor: "pointer",
-                    marginLeft: "10px",
-                    marginTop: "8px"
-                  },
-                  on: {
-                    click: function() {
-                      self.$router.push("/exchange/" + params.row.href);
-                    }
-                  }
-                })
-              ]);
-            }
-          }
         ]
       },
       indexBtn: [
@@ -1046,16 +892,6 @@ export default {
       }
     },
       addClass(index) {
-          //this.choseBtn = index;
-          /*if (index == 0) {
-            this.dataIndex = this.coins.USDT;
-          } else if (index == 1) {
-            this.dataIndex = this.coins.BTC;
-          } else if (index == 2) {
-            this.dataIndex = this.coins.ETH;
-          } else if (index == 3) {
-            this.dataIndex = this.coins.favor;
-          }*/
       },
     getSymbol() {
       this.loading = true;
@@ -1071,8 +907,7 @@ export default {
                 ? "+" + (resp[i].chg * 100).toFixed(2) + "%"
                 : (resp[i].chg * 100).toFixed(2) + "%";
             coin.coin = resp[i].symbol.split("/")[0];
-            coin.base = resp[i].symbol.spl
-            it("/")[1];
+            coin.base = resp[i].symbol.split("/")[1];
             coin.href = (coin.coin + "_" + coin.base).toLowerCase();
             coin.isFavor = false;
             this.coins._map[coin.symbol] = coin;
@@ -1182,7 +1017,7 @@ export default {
 <style scoped lang="scss" >
 
   .tabPage /deep/ .ivu-tabs-nav .ivu-tabs-tab {
-    font-size: 18px;
+    font-size: 14px;
   }
 
   .tabPage /deep/ .ivu-tabs-nav .ivu-tabs-tab-active {
@@ -1192,7 +1027,6 @@ export default {
   .tabPage /deep/ .ivu-tabs-bar {
     border-width: 0px;
   }
-
 
 #pagetips {
   background: #0b1520;
