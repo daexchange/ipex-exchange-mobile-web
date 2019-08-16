@@ -91,7 +91,7 @@
       <div class="footer_content">
         <div class="footer_left">
           <img src="./assets/images/small_logo.svg" style="margin:0"></img>
-           <h3>Caymanex.Pro</h3> 
+           <h3>Caymanex.Pro</h3>
           <p>{{$t("footer.gsmc")}}</p>
           <p>Copyright © 2019 - 2020&nbsp;&nbsp;</p>
         </div>
@@ -128,7 +128,7 @@
             <li>
               <router-link to="/about-fee">{{$t("footer.fltk")}}</router-link>
             </li>
-          </ul> 
+          </ul>
           <ul>
              <li class="footer_title">
               <span>{{$t("footer.lxwm")}}</span>
@@ -143,7 +143,7 @@
             </li>-->
             <!-- <li>
               <a href="https://0.plus/bihuoguanfang" target="_blank">{{$t('footer.biyong')}}</a>
-            </li> 
+            </li>
           </ul>
         </div>
       </div>
@@ -422,7 +422,7 @@ export default {
       position: relative;
       z-index: 10;
       .layout-ceiling {
-        padding: 5px 10px;
+        padding: 9px 18px;
         .layout-logo {
           /*width: 132px;*/
           /*height: 38px;*/
