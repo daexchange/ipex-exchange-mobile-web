@@ -63,7 +63,21 @@
                 username: "",
             }
         },
+        watch: {
+            activeNav: function() {
+                switch (this.activeNav) {
+                    case "nav-exchange":
+                        break;
+                    default:
+                        window.document.title = "星际数字加密资产交易平台";
+                        break;
+                }
+            },
+        },
         computed: {
+            activeNav: function() {
+                return this.$store.state.activeNav;
+            },
             isLogin: function() {
                 return this.$store.getters.isLogin;
             },
@@ -108,6 +122,9 @@
         background: #0b1520;
     }
     .ivu-table:before {
+        background-color: transparent;
+    }
+    .ivu-table:after {
         background-color: transparent;
     }
 </style>
