@@ -9,6 +9,9 @@ import vueResource from 'vue-resource'
 import VueI18n from 'vue-i18n';
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';
+import globalUI from '@/common'
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
 import util from './assets/js/util.js'; //乘除方法，js的算数运算真是SB
 // import './assets/css/theme.less';//重置iview主题颜色
 
@@ -25,7 +28,8 @@ Vue.use(VueRouter);
 Vue.use(vueResource);
 Vue.use(VueI18n);
 Vue.use(ElementUI);
-
+Vue.use(globalUI);
+Vue.use(MintUI);
 // Vue.prototype.host = "https://www.chulian.top"; //测试
 // Vue.prototype.host = "https://www.bhuo.top"; //生产
 // Vue.prototype.host = "http://47.74.216.147"; //新加坡
