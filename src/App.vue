@@ -85,10 +85,21 @@
                 return this.$store.getters.member;
             },
         },
+        mounted() {
+            if (!this.isMobile()) {
+                window.location.href = "https://ipex.openserver.cn/";
+            }
+        },
         created: function () {
             this.initialize();
         },
         methods: {
+            isMobile() {
+                let flag = navigator.userAgent.match(
+                    /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+                );
+                return flag;
+            },
             toggleMenu() {
                 console.log("我被点了....");
                 this.visible = true;
