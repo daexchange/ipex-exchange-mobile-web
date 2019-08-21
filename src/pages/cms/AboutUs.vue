@@ -85,16 +85,8 @@
       </div>
       <div class="content_wrapper">
         <div class="content1">
-          <h5>系统介绍</h5>
-          <p>平台采用前后端分离的开发模式，后端负责业务实现，前端负责数据展示，同时包含有对应的APP。</p>
-        </div>
-        <div class="content1">
-          <!--<h5>使用的技术</h5>
-          <p>1.后端：Spring、SpringMVC、SpringData、SpringCloud、SpringBoot</p>
-          <p>2.数据库：Mysql、Mongodb</p>
-          <p>3.其他：redis、kafka、阿里云OSS、腾讯防水校验</p>
-          <p>4.前端：Vue、iView、less</p>
-          <p>5.同时提供IOS和Android版本。</p>-->
+          <h5>平台介绍</h5>
+          <p style="font-size: 16px">IPEX星际数字加密资产交易平台以数字资产交易服务为重点，提供专业的交易功能，智能交易和智能撮合，多方委托下单，便捷交易，资金委托，账户轻松管理</p>
         </div>
         <!-- <div class="content1" style="border:none;">
           <h5>ZTuo目标</h5>
