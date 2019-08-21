@@ -1,61 +1,67 @@
 <template>
   <div class="login_form">
     <div class="login_right">
-      <Form ref="formInline" :model="formInline" :rules="ruleInline" inline>
-        <div class="login_title">{{$t('uc.login.login')}}</div>
-        <FormItem prop="user">
-          <Input name="user" type="text" v-model="formInline.user" :placeholder="$t('uc.login.account')" class="user">
-          </Input>
-        </FormItem>
-        <FormItem prop="password">
-          <Input type="password" v-model="formInline.password" :placeholder="$t('uc.login.pwdtip')" @on-keyup="onKeyup">
-          </Input>
-        </FormItem>
-        <!--<FormItem class="code" prop="code">
-          <tr>
-            <td>
-              <Input type="text" v-model="formInline.code" :placeholder="$t('uc.login.verificationcode')"></Input>
-            </td>
-            <td>
-              <div class="image" @click="refreshCode" >
-                <img id="imgCode" src="http://ipex.openserver.cn/uc/getKaptchaImage" style="float: bottom">
-              </div>
-            </td>
-          </tr>
-        </FormItem>-->
-        <p id="notice" class="hide">{{$t('uc.login.validatemsg')}}</p>
-        <p style="height:30px;">
-          <router-link to="/findPwd" style="color:#979797;float:right;padding-right:10px;font-size:12px;">
-            {{$t('uc.login.forget')}}
-          </router-link>
-        </p>
-        <FormItem style="margin-bottom:15px;">
-          <Button class="login_btn" @click="handleSubmit('formInline')">{{$t('uc.login.login')}}</Button>
-        </FormItem>
-        <div class='to_register'>
-          <span>没有账号</span>
-          <router-link to="/register">立即注册</router-link>
-        </div>
-      </Form>
+        <Form ref="formInline" :model="formInline" :rules="ruleInline" inline>
+            <h1 class="login_title">{{$t('uc.login.login')}}</h1>
+            <FormItem prop="user">
+                <Input type="text" v-model="formInline.user" :placeholder="$t('uc.login.account')" style="width: 295px">
+                    <Icon type="ios-person-outline" slot="prepend"></Icon>
+                </Input>
+            </FormItem>
+            <FormItem prop="password">
+                <Input type="password" v-model="formInline.password" :placeholder="$t('uc.login.pwdtip')" @on-keyup="onKeyup" style="width: 295px">
+                    <Icon type="ios-lock-outline" slot="prepend"></Icon>
+                </Input>
+            </FormItem>
+            <FormItem prop="emailCode">
+                <Input v-model="formInline.emailCode" :placeholder="$t('uc.regist.emailcodetip')" style="width: 295px">
+                    <Icon type="md-key" slot="prepend"></Icon>
+                    <Button :loading="loading" slot="append" v-if="!loading"
+                            v-show="!show" @click="initGtCaptcha(formInline.user)">
+                        <span>{{$t('uc.regist.sendcode')}}</span>
+                    </Button>
+                    <Button :loading="loading" slot="append" v-else v-show="!show">
+                        <span>{{$t('uc.regist.sendingcode')}}</span>
+                    </Button>
+                    <Button :loading="loading" slot="append" v-show="show">
+                        <span>{{ count }}s 后获取验证码</span>
+                    </Button>
+                </Input>
+            </FormItem>
+            <p style="height:30px;">
+                <router-link to="/findPwd" style="color:#979797;float:right;padding-right:10px;font-size:12px;">
+                    {{$t('uc.login.forget')}}
+                </router-link>
+            </p>
+            <FormItem class="form_submit">
+                <Button type="primary" @click="login" style="width: 295px">
+                    <span style="font-size: 16px">{{$t('uc.login.login')}}</span>
+                </Button>
+            </FormItem>
+            <div class='to_register'>
+                <span>没有账号</span>
+                <router-link to="/register">立即注册</router-link>
+            </div>
+        </Form>
     </div>
-      <div>
-          <el-dialog title="安全验证" :visible.sync="dialogVisible">
-              <el-form :model="form">
-                  <el-form-item label-width="120px">
-                      <el-input v-model="formInline.emailCode" :placeholder="$t('uc.login.emailcode')" autocomplete="off">
-                          <el-button slot="append" class="el-button-tip">
-                              <span v-if="this.formInline.count !== 0">{{ formInline.count }}s 后获取验证码</span>
-                              <span v-else v-show="this.formInline.count === 0" @click="sendEmailCode(formInline.user)">{{$t('uc.regist.sendcode')}}</span>
-                          </el-button>
-                      </el-input>
-                  </el-form-item>
-              </el-form>
-              <div slot="footer" class="dialog-footer">
-                  <el-button @click="close">{{$t('uc.login.cancel')}}</el-button>
-                  <el-button type="primary" @click="login">{{$t('uc.login.confirm')}}</el-button>
-              </div>
-          </el-dialog>
-      </div>
+    <div>
+      <el-dialog title="安全验证" :visible.sync="dialogVisible">
+          <el-form :model="form">
+              <el-form-item label-width="120px">
+                  <el-input v-model="formInline.emailCode" :placeholder="$t('uc.login.emailcode')" autocomplete="off">
+                      <el-button slot="append" class="el-button-tip">
+                          <span v-if="this.formInline.count !== 0">{{ formInline.count }}s 后获取验证码</span>
+                          <span v-else v-show="this.formInline.count === 0" @click="sendEmailCode(formInline.user)">{{$t('uc.regist.sendcode')}}</span>
+                      </el-button>
+                  </el-input>
+              </el-form-item>
+          </el-form>
+          <div slot="footer" class="dialog-footer">
+              <el-button @click="close">{{$t('uc.login.cancel')}}</el-button>
+              <el-button type="primary" @click="login">{{$t('uc.login.confirm')}}</el-button>
+          </div>
+      </el-dialog>
+    </div>
   </div>
 </template>
 <style scoped lang="scss">
@@ -65,7 +71,7 @@
   /* 验证码 */
   .login_form {
     background: #0b1520 url(../../assets/images/login_bg.jpg) no-repeat center center;
-    height: 760px;
+    height: 480px;
     position: relative;
     overflow: hidden;
     .login_right {
@@ -73,17 +79,19 @@
       position: absolute;
       background: #17212e;
       width: 350px;
-      height: 400px;
+      height: 500px;
       left: 50%;
       top: 50%;
       margin-left: -175px;
       margin-top: -165px;
-      border-top: 4px solid #f0ac19;
+      /*border-top: 4px solid #f0ac19;*/
       border-radius: 5px;
       form.ivu-form.ivu-form-label-right.ivu-form-inline {
         .login_title{
-          height: 70px;
-          color: #fff;
+          /*height: 70px;
+          color: #fff;*/
+            text-align: center;
+            margin: 5px 10px 20px 10px;
         }
         .ivu-form-item {
           .ivu-form-item-content {
@@ -106,6 +114,7 @@
       }
     }
     .to_register {
+       /* padding: 0px 5px 0px 5px;*/
       overflow: hidden;
       font-size: 12px;
       span {
@@ -152,6 +161,10 @@
   export default {
     data() {
       return {
+          loading: false,
+          show: false,
+          count: '',
+          timer: null,
           dialogVisible: false,
         captchaObj: null,
         _captchaResult: null,
@@ -206,6 +219,72 @@
       }
     },
     methods: {
+        initGtCaptcha(name) {
+            let reg = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
+            this.title = '请输入正确的邮箱地址';
+            if (!reg.test(name)) {
+                this.errorMsg(this.title);
+                return;
+            }
+            // 直接生成一个验证码对象
+            let self = this;
+            let captcha1 = new TencentCaptcha("2040846200", function (res) {
+                res.ret == 0 &&
+                (self.isRegister = true) &&
+                (self.ticket = res.ticket) &&
+                (self.randStr = res.randstr) &&
+                self.success();
+            });
+            captcha1.show(); // 显示验证码
+        },
+        success() {
+            console.log(123456)
+            this.getVerificationCode();
+        },
+        getVerificationCode() {
+            //this.initGtCaptcha();
+            let params = {};
+            let api = "/uc/email/login/code";
+            this.loading = true;
+            params["email"] = this.formInline.user;
+            this.$http.post(this.host + api, params).then(response => {
+                let status = response.data;
+                if (status.code !== 0) {
+                    this.$Message.error(status.message);
+                    this.loading = false;
+                    this.show = false;
+                } else {
+                    //alert('发送成功！请前往邮箱查看')
+                    this.$Message.success(status.message);
+                    //生成发送验证码后的60秒倒计时
+                    const TIME_COUNT = 60;
+                    if (!this.timer) {
+                        this.count = TIME_COUNT;
+                        this.loading = false;
+                        this.show = true;
+                        this.timer = setInterval(() => {
+                            if (this.count > 0 && this.count <= TIME_COUNT) {
+                                this.count--;
+                            } else {
+                                this.show = false;
+                                clearInterval(this.timer);
+                                this.timer = null;
+                            }
+                        }, 1000)
+                    }
+                }
+                //alert("发送成功！请前往邮箱查看")
+            })
+        },
+        handleSubmit(name) {
+            this.$refs[name].validate((valid) => {
+                if (valid) {
+                    this.login();
+                } else {
+                    //this.$Message.error('Fail!');
+                }
+            });
+        },
       refreshCode() {
         let obj = document.getElementById('imgCode');
         obj.src = this.host + '/uc/getKaptchaImage';
@@ -214,7 +293,6 @@
         if (this.isLogin) {
           this.$router.push("/");
         } else {
-          this.initGtCaptcha();
         }
       },
       onKeyup(ev) {
@@ -222,7 +300,7 @@
           $(".login_btn").click();
         }
       },
-      initGtCaptcha() {
+      /*initGtCaptcha() {
         var that = this;
         this.$http.get(this.host + this.api.uc.captcha).then(function (res) {
           window.initGeetest(
@@ -238,7 +316,7 @@
                   this.handler
           );
         });
-      },
+      },*/
       handler(captchaObj) {
         captchaObj.onReady(() => {
           $("#wait").hide();
@@ -301,7 +379,7 @@
         });
       },
       login() {
-          var param = {};
+        var param = {};
         var params = {};
         params['username'] = this.formInline.user;
         params['password'] = this.formInline.password;
@@ -335,6 +413,7 @@
             this.dialogVisible = false;
         },
       handleSubmit(name) {
+          debugger
         var result = this._captchaResult;
         if (!result) {
           $("#notice").show();
@@ -399,7 +478,7 @@
             // }
           });
         }
-      }
+      },
     }
   }
 </script>

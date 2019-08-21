@@ -1,46 +1,58 @@
-<<template>
+<
+<template>
     <div class="register_form">
         <div class="register_head">
-            <Tabs class="tabpane" v-model="tab" size="default">
-                <TabPane :label="label2" name="key2">
-                    <Form ref="formItem2" :model="formItem2" label-position="top">
-                        <FormItem :label="$t('uc.regist.email')" prop="email" :rules="email">
-                            <!--防止自动填入邮箱地址和密码-->
-                            <Input type="password"  style="position: absolute;z-index: -999"/>
-                            <Input v-model="formItem2.email" :placeholder="$t('uc.regist.emailtip')" @keyup.native="disable()"></Input>
-                        </FormItem>
-                        <FormItem :label="$t('uc.regist.emailcode')" prop="emailCode" :rules="emailCode">
-                            <!--防止自动填入邮箱地址和密码-->
-                            <Input type="password"  style="position: absolute;z-index: -999"/>
-                            <Input v-model="formItem2.emailCode" @keyup.native="disable()" :placeholder="$t('uc.regist.emailcodetip')">
-                                <Button :loading="formItem2.loading" slot="append">
-                                    <span v-if="!formItem2.loading" v-show="!formItem2.show" @click="initGtCaptcha(formItem2.email)">{{$t('uc.regist.sendcode')}}</span>
-                                    <span v-else v-show="!formItem2.show">{{$t('uc.regist.sendingcode')}}</span>
-                                    <span v-show="formItem2.show">{{ formItem2.count }}s 后获取验证码</span>
-                                </Button>
-                            </Input>
-                        </FormItem>
-                        <FormItem :label="$t('uc.regist.pwd')" prop="password" :rules="password">
-                            <!--防止自动填入用户名密码-->
-                            <Input type="password"  style="position: absolute;z-index: -999"/>
-                            <Input type="password" v-model="formItem2.password" @keyup.native="disable()" :placeholder="$t('uc.regist.pwdvalidate1')" style="width: 390px"></Input>
-                        </FormItem>
-                        <FormItem class="rePwd_input" :label="$t('uc.regist.confrimpwd')" prop="repassword" :rules="repassword">
-                            <!--防止自动填入用户名密码-->
-                            <Input type="password"  style="position: absolute;z-index: -999"/>
-                            <Input type="password" v-model="formItem2.repassword" @keyup.native="disable()" :placeholder="$t('uc.regist.confirmpwdtip')" style="width: 390px"></Input>
-                        </FormItem>
-                        <FormItem class="check-agree">
-                            <Checkbox v-model="formItem2.single" @on-change="disable()" @keyup.native="disable()">{{$t('uc.regist.agreement')}}</Checkbox>
-                            <a href="#/helpdetail?cate=1&id=17&cateTitle=常见问题" target="_blank" style="">《{{$t('uc.regist.userprotocol')}}》</a>
-                        </FormItem>
-                        <FormItem class="form_submit">
-                            <Button v-if="formItem2.isOk" type="primary" @click="handleSubmit('formItem2')" long>{{$t('uc.regist.regist')}}</Button>
-                            <Button v-else="formItem2.isOk" :disabled="!formItem2.isOk" type="primary" long>{{$t('uc.regist.regist')}}</Button>
-                        </FormItem>
-                    </Form>
-                </TabPane>
-            </Tabs>
+            <h1 style="text-align: center;color: #2c3b59;padding-bottom: 15px">邮箱注册</h1>
+            <Form ref="formItem2" :model="formItem2" label-position="top">
+                <FormItem :label="$t('uc.regist.email')" prop="email" :rules="email">
+                    <!--防止自动填入邮箱地址和密码-->
+                    <Input type="password" style="position: absolute;z-index: -999"/>
+                    <Input v-model="formItem2.email" :placeholder="$t('uc.regist.emailtip')"
+                           @keyup.native="disable()"></Input>
+                </FormItem>
+                <FormItem :label="$t('uc.regist.emailcode')" prop="emailCode" :rules="emailCode">
+                    <!--防止自动填入邮箱地址和密码-->
+                    <Input type="password" style="position: absolute;z-index: -999"/>
+                    <Input v-model="formItem2.emailCode" @keyup.native="disable()" :placeholder="$t('uc.regist.emailcodetip')">
+                        <Button :loading="formItem2.loading" slot="append" v-if="!formItem2.loading"
+                                v-show="!formItem2.show" @click="initGtCaptcha(formItem2.email)">
+                            <span>{{$t('uc.regist.sendcode')}}</span>
+                        </Button>
+                        <Button :loading="formItem2.loading" slot="append" v-else v-show="!formItem2.show">
+                            <span>{{$t('uc.regist.sendingcode')}}</span>
+                        </Button>
+                        <Button :loading="formItem2.loading" slot="append" v-show="formItem2.show">
+                            <span>{{ formItem2.count }}s 后获取验证码</span>
+                        </Button>
+                    </Input>
+                </FormItem>
+                <FormItem :label="$t('uc.regist.pwd')" prop="password" :rules="password">
+                    <!--防止自动填入用户名密码-->
+                    <Input type="password" style="position: absolute;z-index: -999"/>
+                    <Input type="password" v-model="formItem2.password" @keyup.native="disable()"
+                           :placeholder="$t('uc.regist.pwdvalidate1')" style="width: 390px"></Input>
+                </FormItem>
+                <FormItem class="rePwd_input" :label="$t('uc.regist.confrimpwd')" prop="repassword" :rules="repassword">
+                    <!--防止自动填入用户名密码-->
+                    <Input type="password" style="position: absolute;z-index: -999"/>
+                    <Input type="password" v-model="formItem2.repassword" @keyup.native="disable()"
+                           :placeholder="$t('uc.regist.confirmpwdtip')" style="width: 390px"></Input>
+                </FormItem>
+                <FormItem class="check-agree">
+                    <Checkbox v-model="formItem2.single" @on-change="disable()" @keyup.native="disable()">
+                        {{$t('uc.regist.agreement')}}
+                    </Checkbox>
+                    <a href="#/helpdetail?cate=1&id=1&cateTitle=常见问题" target="_blank" style="">《{{$t('uc.regist.userprotocol')}}》</a>
+                </FormItem>
+                <FormItem class="form_submit">
+                    <Button v-if="formItem2.isOk" type="primary" @click="handleSubmit('formItem2')" long>
+                        <span style="font-size: 16px">{{$t('uc.regist.regist')}}</span>
+                    </Button>
+                    <Button v-else :disabled="!formItem2.isOk" type="primary" long style="background: #808695">
+                        <span style="font-size: 16px">{{$t('uc.regist.regist')}}</span>
+                    </Button>
+                </FormItem>
+            </Form>
         </div>
     </div>
 </template>
@@ -72,24 +84,9 @@
             };
             return {
                 label2: (h) => {
-                    return h('div', [ h('span', { style: { fontSize: '20px' } },  this.$t('uc.regist.emailregist'))])
+                    return h('div', [h('span', {style: {fontSize: '20px'}}, this.$t('uc.regist.emailregist'))])
                 },
                 tab: 'key2',
-                countryList: [],
-                formItem1: {
-                    country: '',
-                    countryCode: '',
-                    phoneNumber: '',
-                    noteCode: '',
-                    loading: false,
-                    show: false,
-                    username: '',
-                    password: '',
-                    repassword: '',
-                    single: false,
-                    count: '',
-                    timer: null
-                },
                 formItem2: {
                     isOk: false,
                     country: null,
@@ -118,23 +115,27 @@
                 //         { required: true, message: this.$t('uc.regist.smscodetip'), trigger: 'blur' }
                 //     ],
                 email: [
-                    { required: true, message: this.$t('uc.regist.emailtip')/*this.$t("uc.regist.teltip")*/, trigger: 'blur' },
-                    { type: 'email', message: this.$t('uc.regist.emailerr'), trigger: 'blur' }
+                    {
+                        required: true,
+                        message: this.$t('uc.regist.emailtip')/*this.$t("uc.regist.teltip")*/,
+                        trigger: 'blur'
+                    },
+                    {type: 'email', message: this.$t('uc.regist.emailerr'), trigger: 'blur'}
                 ],
                 emailCode: [
-                    { required: true, message: this.$t('uc.regist.emailcodetip'), trigger: 'blur' }
+                    {required: true, message: this.$t('uc.regist.emailcodetip'), trigger: 'blur'}
                 ],
                 // username: [
                 //     { required: true, message: this.$t('uc.regist.usernametip'), trigger: 'blur' },
                 //     { type: 'string', min: 3, max: 15, message: this.$t('uc.regist.usernamemsg'), trigger: 'blur' }
                 // ],
                 password: [
-                    { required: true, message: this.$t('uc.regist.pwdtip'), trigger: 'blur' },
-                    { type: 'string', min: 6, message: this.$t('uc.regist.pwdmsg'), trigger: 'blur' }
+                    {required: true, message: this.$t('uc.regist.pwdtip'), trigger: 'blur'},
+                    {type: 'string', min: 6, message: this.$t('uc.regist.pwdmsg'), trigger: 'blur'}
                 ],
                 repassword: [
-                    { required: true, message: this.$t('uc.regist.confirmpwdtip'), trigger: 'blur' },
-                    { validator: validateRepassword, trigger: 'blur' }
+                    {required: true, message: this.$t('uc.regist.confirmpwdtip'), trigger: 'blur'},
+                    {validator: validateRepassword, trigger: 'blur'}
                 ],
                 // },
                 isRegister: '',
@@ -241,7 +242,7 @@
                 })
 
             },
-            disable(){
+            disable() {
                 let reg = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
                 if (this.formItem2.password.length > 5 && reg.test(this.formItem2.email) && this.formItem2.repassword === this.formItem2.password
                     && this.formItem2.emailCode !== null && this.formItem2.emailCode !== '' && this.formItem2.single) {
@@ -304,7 +305,9 @@
                                 // this.instance('success');
                                 this.title = '注册成功';
                                 this.successMsg(this.title);
-                                setTimeout(() => { this.$router.push({ path: '/login' }); }, 300);
+                                setTimeout(() => {
+                                    this.$router.push({path: '/login'});
+                                }, 300);
                             }
                         }).catch(error => {
                             //alert('提交失败：' + error.statusText)
@@ -346,7 +349,7 @@
             success() {
                 this.getVerificationCode();
             },
-            instance (type) {
+            instance(type) {
                 const title = this.title;
                 const content = this.content;
                 switch (type) {
@@ -376,13 +379,13 @@
                         break;
                 }
             },
-            successMsg (content) {
+            successMsg(content) {
                 this.$Message.success(content);
             },
             /*warningMsg (content) {
                 this.$Message.warning(content);
             },*/
-            errorMsg (content) {
+            errorMsg(content) {
                 this.$Message.error(content);
             }
         }
@@ -393,35 +396,44 @@
     .ivu-tabs-ink-bar {
         width: 390px !important;
     }
+
     .ivu-tabs-nav .ivu-tabs-tab {
         padding: 8px 9.5px;
     }
-    /*.ivu-tabs-nav-scrollable {
-        padding: 0 0;
-    }*/
+
     .register_form .register_head .rePwd_input {
-        margin-bottom: 16px;
+        margin-bottom: 20px;
     }
+
     .register_form .register_head .check-agree {
-        margin-bottom: 12px;
+        margin-bottom: 20px;
     }
-    /*.ivu-btn-primary[disabled], .ivu-btn-primary[disabled]:hover {*/
-    /*    background-color: #666;*/
-    /*}*/
-    /*.form_submit /deep/ .ivu-btn > span {*/
-    /*    font-size: 16px;*/
-    /*}*/
+
+    .ivu-form-item {
+        margin-bottom: 28px;
+    }
+
+    .ivu-btn-primary, .ivu-btn-primary:hover {
+        border: none;
+    }
+
+    .check-agree /deep/ .ivu-checkbox-checked .ivu-checkbox-inner {
+        border: 1px solid #f0ac19;
+        background-color: #f0ac19;
+    }
+
     .register_form {
         background: #0b1520 url(../../assets/images/login_bg.jpg) no-repeat center center;
         height: 760px;
         position: relative;
         overflow: hidden;
+
         .register_head {
             padding: 17px 30px;
             position: absolute;
             background: #17212e;
             width: 450px;
-            height: 550px;
+            height: 530px;
             left: 50%;
             top: 50%;
             margin-left: -190px;
@@ -434,18 +446,19 @@
                 line-height: 30px;
                 font-size: 12px;
                 cursor: default;
+
                 a {
                     color: #f0ac19;
                     margin-left: -10px;
                 }
-                .ivu-checkbox-wrapper.ivu-checkbox-wrapper-checked {
+                /*.ivu-checkbox-wrapper.ivu-checkbox-wrapper-checked {
                     .ivu-checkbox.ivu-checkbox-checked {
                         .ivu-checkbox-inner {
                             border: 1px solid #f0ac19;
                             background-color: #f0ac19;
                         }
                     }
-                }
+                }*/
             }
         }
 
