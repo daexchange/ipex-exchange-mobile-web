@@ -1,4 +1,3 @@
-<
 <template>
     <div class="register_form">
         <div class="register_head">
@@ -30,13 +29,13 @@
                     <!--防止自动填入用户名密码-->
                     <Input type="password" style="position: absolute;z-index: -999"/>
                     <Input type="password" v-model="formItem2.password" @keyup.native="disable()"
-                           :placeholder="$t('uc.regist.pwdvalidate1')" style="width: 390px"></Input>
+                           :placeholder="$t('uc.regist.pwdvalidate1')"></Input>
                 </FormItem>
                 <FormItem class="rePwd_input" :label="$t('uc.regist.confrimpwd')" prop="repassword" :rules="repassword">
                     <!--防止自动填入用户名密码-->
                     <Input type="password" style="position: absolute;z-index: -999"/>
                     <Input type="password" v-model="formItem2.repassword" @keyup.native="disable()"
-                           :placeholder="$t('uc.regist.confirmpwdtip')" style="width: 390px"></Input>
+                           :placeholder="$t('uc.regist.confirmpwdtip')"></Input>
                 </FormItem>
                 <FormItem class="check-agree">
                     <Checkbox v-model="formItem2.single" @on-change="disable()" @keyup.native="disable()">
@@ -424,21 +423,16 @@
 
     .register_form {
         background: #0b1520 url(../../assets/images/login_bg.jpg) no-repeat center center;
-        height: 760px;
+        height: 660px;
         position: relative;
         overflow: hidden;
-
         .register_head {
             padding: 17px 30px;
-            position: absolute;
+            /*position: absolute;*/
             background: #17212e;
-            width: 450px;
+            width: 85%;
             height: 530px;
-            left: 50%;
-            top: 50%;
-            margin-left: -190px;
-            margin-top: -298px;
-            /*border-top: 4px solid #f0ac19;*/
+            margin: 25px auto;
             border-radius: 5px;
             .check-agree {
                 color: #979797;
@@ -451,14 +445,6 @@
                     color: #f0ac19;
                     margin-left: -10px;
                 }
-                /*.ivu-checkbox-wrapper.ivu-checkbox-wrapper-checked {
-                    .ivu-checkbox.ivu-checkbox-checked {
-                        .ivu-checkbox-inner {
-                            border: 1px solid #f0ac19;
-                            background-color: #f0ac19;
-                        }
-                    }
-                }*/
             }
         }
 
