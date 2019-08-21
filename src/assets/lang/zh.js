@@ -428,6 +428,7 @@ module.exports = {
             pwdtip: '密码',
             validatecodeload: '正在加载验证码',
             verificationcode: '请输入验证码',
+            verificationcode1: '验证码错误',
             validatemsg: '请先完成验证',
             forget: '忘记密码?',
             accountValidate: '请输入账号',

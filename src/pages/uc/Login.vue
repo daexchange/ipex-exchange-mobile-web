@@ -34,7 +34,7 @@
                 </router-link>
             </p>
             <FormItem class="form_submit">
-                <Button type="primary" @click="login" style="width: 295px">
+                <Button type="primary" @click="handleSubmit('formInline')" style="width: 295px">
                     <span style="font-size: 16px">{{$t('uc.login.login')}}</span>
                 </Button>
             </FormItem>
@@ -43,24 +43,6 @@
                 <router-link to="/register">立即注册</router-link>
             </div>
         </Form>
-    </div>
-    <div>
-      <el-dialog title="安全验证" :visible.sync="dialogVisible">
-          <el-form :model="form">
-              <el-form-item label-width="120px">
-                  <el-input v-model="formInline.emailCode" :placeholder="$t('uc.login.emailcode')" autocomplete="off">
-                      <el-button slot="append" class="el-button-tip">
-                          <span v-if="this.formInline.count !== 0">{{ formInline.count }}s 后获取验证码</span>
-                          <span v-else v-show="this.formInline.count === 0" @click="sendEmailCode(formInline.user)">{{$t('uc.regist.sendcode')}}</span>
-                      </el-button>
-                  </el-input>
-              </el-form-item>
-          </el-form>
-          <div slot="footer" class="dialog-footer">
-              <el-button @click="close">{{$t('uc.login.cancel')}}</el-button>
-              <el-button type="primary" @click="login">{{$t('uc.login.confirm')}}</el-button>
-          </div>
-      </el-dialog>
     </div>
   </div>
 </template>
@@ -179,9 +161,9 @@
               desc: ''
           },
         formInline: {
-          user: "",
-          password: "",
-          code: "",
+            user: "",
+            password: "",
+            code: "",
             emailCode: "",
             count: "",
             timer: ""
@@ -206,7 +188,21 @@
               message: this.$t("uc.login.pwdvalidate2"),
               trigger: "blur"
             }
-          ]
+          ],
+            emailCode: [
+                {
+                    required: true,
+                    message: this.$t("uc.login.verificationcode"),
+                    trigger: "blur"
+                },
+                {
+                    type: "string",
+                    min: 6,
+                    max: 6,
+                    message: this.$t("uc.login.verificationcode1"),
+                    trigger: "blur"
+                }
+            ]
         }
       };
     },
@@ -280,8 +276,6 @@
             this.$refs[name].validate((valid) => {
                 if (valid) {
                     this.login();
-                } else {
-                    //this.$Message.error('Fail!');
                 }
             });
         },
@@ -299,47 +293,6 @@
         if (ev.keyCode == 13) {
           $(".login_btn").click();
         }
-      },
-      /*initGtCaptcha() {
-        var that = this;
-        this.$http.get(this.host + this.api.uc.captcha).then(function (res) {
-          window.initGeetest(
-                  {
-                    // 以下配置参数来自服务端 SDK
-                    gt: res.body.gt,
-                    challenge: res.body.challenge,
-                    offline: !res.body.success, //表示用户后台检测极验服务器是否宕机
-                    new_captcha: res.body.new_captcha, //用于宕机时表示是新验证码的宕机
-                    product: "bind",
-                    width: "100%"
-                  },
-                  this.handler
-          );
-        });
-      },*/
-      handler(captchaObj) {
-        captchaObj.onReady(() => {
-          $("#wait").hide();
-        }).onSuccess(() => {
-          // result存的是调用后台图片验证码的结果
-          let result = (this._captchaResult = captchaObj.getValidate());
-          if (!result) {
-            this.$Message.error("请完成验证");
-          } else {
-            this.handleSubmit("formInline");
-          }
-        });
-        $(".login_btn").click(() => {
-          let regPhone = /^[1][3,4,5,6,7,8,9][0-9]{9}$/,
-                  regEmail = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/,
-                  account = this.formInline.user,
-                  flagAccount = regPhone.test(account) || regEmail.test(account),
-                  flagPassword = this.formInline.password.length >= 6 ? true : false;
-          console.log('captchaObj',captchaObj);
-            console.log('captchaObjverify()',captchaObj.verify());
-          flagAccount && flagPassword && captchaObj && captchaObj.verify();
-          (!flagAccount || !flagPassword) && this.$Message.error("请填写完整的信息");
-        });
       },
       logout() {
         this.$http.post(this.host + "/uc/logout", {}).then(response => {
@@ -412,73 +365,6 @@
         close() {
             this.dialogVisible = false;
         },
-      handleSubmit(name) {
-          debugger
-        var result = this._captchaResult;
-        if (!result) {
-          $("#notice").show();
-          setTimeout(function () {
-            $("#notice").hide();
-          }, 2000);
-        } else {
-          this.$refs[name].validate(valid => {
-            if (valid) {
-              var params = {};
-              params['username'] = this.formInline.user;
-              params['password'] = this.formInline.password;
-              // this.$http.post(this.host + this.api.uc.login, params).then(response => {
-                // 邮箱发送请求校验用户名和手机号
-                    this.$http.post(this.host + this.api.uc.check, params).then(response => {
-                        let resp = response.data;
-                        // 若校验成功，则发出邮箱验证码的请求，并弹出弹出框
-                        if (resp.code === 0) {
-                            // 展示弹出框
-                            this.dialogVisible = true;
-                            //  设置时间锁，控制是否展示发送验证码的倒计时或发送验证码
-                            const TIME_COUNT = 60;
-                            if (!this.formInline.timer) {
-                                this.formInline.count = TIME_COUNT;
-                                this.formInline.timer = setInterval(() => {
-                                    if (this.formInline.count > 0 && this.formInline.count <= TIME_COUNT) {
-                                        this.formInline.count--;
-                                    } else {
-                                        clearInterval(this.formInline.timer);
-                                        this.formInline.timer = null;
-                                    }
-                                }, 1000)
-                            }
-                            // 发送验证码
-                            this.sendEmailCode(resp.message);
-                        } else {
-                            this.$Message.error(resp.message);
-                        }
-                    });
-                }
-            //     if (valid) {
-            //       var params = {};
-            //       params["username"] = this.formInline.user;
-            //       params["password"] = this.formInline.password;
-            //       this.$http.post(this.host + this.api.uc.login, params).then(response => {
-            //         let resp = response.data;
-            //         if (resp.code === 0) {
-            //           this.$Message.success(this.$t("uc.login.success"));
-            //           this.$store.commit("setMember", resp.data);
-            //           if (this.$route.query.key != null && this.$route.query.key !== "") {
-            //             localStorage.setItem("USERKEY", this.$route.query.key);
-            //           }
-            //           this.$router.push("/");
-            //         } else {
-            //           this.$Message.error(resp.message);
-            //         }
-            //       });
-            //     } else {
-            //
-            //     }
-            //   });
-            // }
-          });
-        }
-      },
     }
   }
 </script>
