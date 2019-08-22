@@ -37,6 +37,7 @@
                 <Button type="primary" @click="handleSubmit('formInline')" style="width: 295px">
                     <span style="font-size: 16px">{{$t('uc.login.login')}}</span>
                 </Button>
+                <toast v-model="showPositionValue" type="success" :time="800" is-show-mask :text="toastText" :position="position"></toast>
             </FormItem>
             <div class='to_register'>
                 <span>没有账号</span>
@@ -143,6 +144,9 @@
   export default {
     data() {
       return {
+          showPositionValue: false, //是否显示提示
+          position: 'center', //提示信息的位置
+          toastText: '', // 提示文本
           loading: false,
           show: false,
           count: '',
@@ -215,6 +219,10 @@
       }
     },
     methods: {
+        switchStatus: function(msg) {
+            this.showPositionValue = true;
+            this.toastText = msg;
+        },
         initGtCaptcha(name) {
             let reg = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
             this.title = '请输入正确的邮箱地址';
@@ -345,13 +353,12 @@
               let api = "/uc/email/login/success/code";
               this.$http.post(this.host + api, param).then((response) =>{
                   let resp = response.data;
-                  if (resp.code === 0) {
-                      this.$Message.success(this.$t("uc.login.success"));
-                  } else {
+                  if (resp.code !== 0) {
                       this.$Message.error(resp.message);
+                  } else {
                   }
               });
-            this.$Message.success(this.$t("uc.login.success"));
+            //this.$Message.success(this.$t("uc.login.success"));
             this.$store.commit("setMember", resp.data);
             if (this.$route.query.key != null && this.$route.query.key !== "") {
               localStorage.setItem("USERKEY", this.$route.query.key);

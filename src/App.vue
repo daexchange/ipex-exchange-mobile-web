@@ -22,41 +22,11 @@
                 </div>
             </div>
         </div>
-        <!-- 侧边栏 -->
-        <my-menu :my-visible.sync = "visible">
-            <!-- 这里的按钮可以自己去封装定义 -->
-            <!-- <p slot='toggleBtn'>点我点我</p> -->
-            <!--<template slot="menu-title">LlLl</template>-->
-            <menu-item route='/'>
-                <Icon type="md-contact" size="38"/>
-                <span style="font-size: 16px; vertical-align: center">登录</span>
-                <span style="font-size: 16px; vertical-align: center">|</span>
-                <span style="font-size: 16px; vertical-align: center">注册</span>
-            </menu-item>
-            <menu-item route='/'>
-                <Icon type="md-home" size="22"/>
-                <span style="font-size: 14px; vertical-align: bottom">首页</span>
-            </menu-item>
-            <menu-item route='/login'>
-                    <Icon type="logo-bitcoin" size="22"/>
-                    <span style="font-size: 14px; vertical-align: bottom">币币交易</span>
-            </menu-item>
-            <menu-item route='/register'>
-                <Icon type="md-desktop" size="22"/>
-                <span style="font-size: 14px; vertical-align: bottom">法币交易</span>
-            </menu-item>
-            <menu-item route='/register'>
-                <Icon type="md-person" size="22"/>
-                <span style="font-size: 14px; vertical-align: bottom">个人中心</span>
-            </menu-item>
-        </my-menu>
         <router-view></router-view>
     </div>
 </template>
 <script>
-    import MyMenu from "./common/global/sidebar/src/my-menu";
     export default {
-        components: {MyMenu},
         data() {
             return {
                 visible: false,  // 侧边栏是否打开
@@ -101,7 +71,6 @@
                 return flag;
             },
             toggleMenu() {
-                console.log("我被点了....");
                 this.visible = true;
             },
             showUsername(str) {

@@ -14,13 +14,11 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "element-ui": "^2.10.0",
     "iview": "^3.1.0",
     "jquery": "^3.3.1",
     "json-server": "^0.12.1",
     "less": "^2.7.3",
     "less-loader": "^4.1.0",
-    "mint-ui": "^2.2.13",
     "moment": "^2.20.1",
     "stompjs": "^2.3.3",
     "vue": "^2.5.2",
@@ -30,7 +28,8 @@
     "vue-qriously": "^1.1.1",
     "vue-resource": "^1.3.4",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vux": "^2.9.4"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -92,6 +91,7 @@
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.5.2",
+    "vux-loader": "^1.2.9",
     "webpack": "^3.10.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.11.0",

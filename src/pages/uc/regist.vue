@@ -60,15 +60,6 @@
     export default {
         inject: ['reload'],
         data() {
-            const validatePhone = (rule, value, callback) => {
-                if (!value) {
-                    return callback(new Error(this.$t('uc.regist.teltip')));
-                } else if (!/^1[34578]\d{9}$/.test(value)) {
-                    callback(this.$t('uc.regist.telerr'));
-                } else {
-                    callback();
-                }
-            };
             const validateRepassword = (rule, value, callback) => {
                 let tab = this.tab;
                 if (value === '') {
