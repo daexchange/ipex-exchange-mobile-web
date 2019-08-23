@@ -1,6 +1,6 @@
 <template>
     <div class="page-view">
-        <drawer width="200px;" :show.sync="drawerVisibility" :placement="popForward" :drawer-style="{'background-color':'rgb(9, 33, 84)', width: '60%', height: '667px'}">
+        <drawer width="200px;" :show.sync="drawerVisibility" placement="left" :drawer-style="{'background-color':'rgb(9, 33, 84)', width: '60%', height: '667px'}">
 
             <div slot="drawer" class="drawerContent">
                 <!-- 菜单内容 -->
@@ -74,7 +74,6 @@
         data() {
             return {
                 drawerVisibility: false,  // 侧边栏是否打开
-                popForward: 'right',
                 username: "",
             }
         },
@@ -207,7 +206,7 @@
         margin: 7px 14px 0px 0px;
     }
     .group_cell {
-        font-size: 14px;
+        font-size: 16px;
         color: #c6e9f8;
         background: rgb(9, 33, 84);
     }
