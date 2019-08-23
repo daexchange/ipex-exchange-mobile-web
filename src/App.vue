@@ -1,17 +1,12 @@
 <template>
     <div class="page-view">
-        <drawer width="200px;" :show.sync="drawerVisibility" show-mode="overlay" placement="right" :drawer-style="{'background-color':'rgb(9, 33, 84)', width: '60%', height: '667px'}">
+        <drawer width="200px;" :show.sync="drawerVisibility" :placement="popForward" :drawer-style="{'background-color':'rgb(9, 33, 84)', width: '60%', height: '667px'}">
 
             <div slot="drawer" class="drawerContent">
                 <!-- 菜单内容 -->
                 <div style="width: 100%; height: 28px">
                     <div @click="toggleMenu" class="closeMenu">✕</div>
                 </div>
-                <!--<Group>
-                    <cell title="登录 丨 注册" class="group_cell">
-                        <Icon type="md-contact" size="42" slot="icon" style="margin-right: 6px"/>
-                    </cell>
-                </Group>-->
                 <Group>
                     <cell class="group_cell">
                         <div slot="title">
@@ -21,17 +16,19 @@
                         </div>
                         <Icon type="md-contact" size="42" slot="icon" style="margin-right: 6px"/>
                     </cell>
-                    <cell link="/" @click.native="toggleMenu" class="group_cell">
-                        <div slot="title">首页</div>
+                    <cell link="/" title="首页" @click.native="toggleMenu" class="group_cell">
                         <Icon type="md-home" size="22" slot="icon" style="margin-right: 6px"/>
                     </cell>
-                    <cell link="/exchange" @click.native="toggleMenu" class="group_cell">
-                        <div slot="title">币币交易</div>
+                    <cell link="/exchange" title="币币交易" @click.native="toggleMenu" class="group_cell">
                         <Icon type="logo-bitcoin" size="22" slot="icon" style="margin-right: 6px"/>
                     </cell>
-                    <cell link="/otc/trade/ETH" @click.native="toggleMenu" class="group_cell">
-                        <div slot="title">法币交易</div>
+                    <cell link="/otc/trade/ETH" title="法币交易" @click.native="toggleMenu" class="group_cell">
                         <Icon type="ios-desktop" size="22" slot="icon" style="margin-right: 6px"/>
+                    </cell>
+                </Group>
+                <Group gutter="0px" class="group_cell_member">
+                    <cell link="/uc/safe" title="个人中心" @click.native="toggleMenu" class="group_cell">
+                        <Icon type="md-person" size="22" slot="icon" style="margin-right: 6px"/>
                     </cell>
                 </Group>
             </div>
@@ -77,6 +74,7 @@
         data() {
             return {
                 drawerVisibility: false,  // 侧边栏是否打开
+                popForward: 'right',
                 username: "",
             }
         },
@@ -218,5 +216,8 @@
     }
     .drawerContent /deep/ .weui-cells:after {
         border-bottom: 4px solid #D9D9D9;
+    }
+    .group_cell_member /deep/ .weui-cells:after {
+        border-bottom: 0px solid #D9D9D9;
     }
 </style>
