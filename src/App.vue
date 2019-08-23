@@ -21,16 +21,16 @@
                         </div>
                         <Icon type="md-contact" size="42" slot="icon" style="margin-right: 6px"/>
                     </cell>
-                    <cell link="/" class="group_cell">
-                        <div slot="title" @click="toggleMenu">首页</div>
+                    <cell link="/" @click.native="toggleMenu" class="group_cell">
+                        <div slot="title">首页</div>
                         <Icon type="md-home" size="22" slot="icon" style="margin-right: 6px"/>
                     </cell>
-                    <cell link="/exchange" class="group_cell">
-                        <div slot="title" @click="toggleMenu">币币交易</div>
+                    <cell link="/exchange" @click.native="toggleMenu" class="group_cell">
+                        <div slot="title">币币交易</div>
                         <Icon type="logo-bitcoin" size="22" slot="icon" style="margin-right: 6px"/>
                     </cell>
-                    <cell link="/otc/trade/ETH" class="group_cell">
-                        <div slot="title" @click="toggleMenu">法币交易</div>
+                    <cell link="/otc/trade/ETH" @click.native="toggleMenu" class="group_cell">
+                        <div slot="title">法币交易</div>
                         <Icon type="ios-desktop" size="22" slot="icon" style="margin-right: 6px"/>
                     </cell>
                 </Group>
