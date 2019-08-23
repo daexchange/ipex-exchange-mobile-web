@@ -1,6 +1,6 @@
 <template>
     <div class="page-view">
-        <drawer width="200px;" :show.sync="drawerVisibility" placement="left" :drawer-style="{'background-color':'rgb(9, 33, 84)', width: '60%', height: '667px'}">
+        <drawer width="200px;" :show.sync="drawerVisibility" placement="left" :drawer-style="{'background-color':'rgb(9, 33, 84)', width: '53%', height: '667px'}">
 
             <div slot="drawer" class="drawerContent">
                 <!-- 菜单内容 -->
