@@ -1,35 +1,82 @@
 <template>
     <div class="page-view">
-        <div class="app-header">
-            <router-link to="/">
-                <div  class="header-logo"></div>
-            </router-link>
-            <div class="login-register-menu">
-                <div class="ifLogin" v-if="!isLogin">
-                    <router-link to="/login">
-                        <div class="login">登录</div>
-                    </router-link>
-                    <router-link to="/register">
-                        <div class="register">注册</div>
-                    </router-link>
+        <drawer width="200px;" :show.sync="drawerVisibility" show-mode="overlay" placement="right" :drawer-style="{'background-color':'rgb(9, 33, 84)', width: '60%', height: '667px'}">
+
+            <div slot="drawer" class="drawerContent">
+                <!-- 菜单内容 -->
+                <div style="width: 100%; height: 28px">
+                    <div @click="toggleMenu" class="closeMenu">✕</div>
                 </div>
-                <div class="ifLogin" v-if="isLogin">
-                    <Icon style="margin-bottom: 4px" type="md-person" size="20"/>
-                    <div class="showNmae">{{ showUsername(member.username) }}</div>
-                </div>
-                <div class="menu">
-                    <img @click="toggleMenu" src="./assets/images/nav_manu.svg" style="height: 20px; width: 20px;text-align: center; vertical-align: middle;">
-                </div>
+                <!--<Group>
+                    <cell title="登录 丨 注册" class="group_cell">
+                        <Icon type="md-contact" size="42" slot="icon" style="margin-right: 6px"/>
+                    </cell>
+                </Group>-->
+                <Group>
+                    <cell class="group_cell">
+                        <div slot="title">
+                            <router-link to="/login"><span @click="toggleMenu">登录</span></router-link>
+                            <span>丨</span>
+                            <router-link to="/register"><span @click="toggleMenu">注册</span></router-link>
+                        </div>
+                        <Icon type="md-contact" size="42" slot="icon" style="margin-right: 6px"/>
+                    </cell>
+                    <cell link="/" class="group_cell">
+                        <div slot="title" @click="toggleMenu">首页</div>
+                        <Icon type="md-home" size="22" slot="icon" style="margin-right: 6px"/>
+                    </cell>
+                    <cell link="/exchange" class="group_cell">
+                        <div slot="title" @click="toggleMenu">币币交易</div>
+                        <Icon type="logo-bitcoin" size="22" slot="icon" style="margin-right: 6px"/>
+                    </cell>
+                    <cell link="/otc/trade/ETH" class="group_cell">
+                        <div slot="title" @click="toggleMenu">法币交易</div>
+                        <Icon type="ios-desktop" size="22" slot="icon" style="margin-right: 6px"/>
+                    </cell>
+                </Group>
             </div>
-        </div>
-        <router-view></router-view>
+
+            <!-- rourer-view 作为默认插槽内容 -->
+            <div>
+                <div class="app-header">
+                    <router-link to="/">
+                        <div  class="header-logo"></div>
+                    </router-link>
+                    <div class="login-register-menu">
+                        <div class="ifLogin" v-if="!isLogin">
+                            <router-link to="/login">
+                                <div class="login">登录</div>
+                            </router-link>
+                            <router-link to="/register">
+                                <div class="register">注册</div>
+                            </router-link>
+                        </div>
+                        <div class="ifLogin" v-if="isLogin">
+                            <Icon style="margin-bottom: 4px" type="md-person" size="20"/>
+                            <div class="showNmae">{{ showUsername(member.username) }}</div>
+                        </div>
+                        <div class="menu">
+                            <img @click="toggleMenu" src="./assets/images/nav_manu.svg" style="height: 20px; width: 20px;text-align: center; vertical-align: middle;">
+                        </div>
+                    </div>
+                </div>
+                <router-view></router-view>
+            </div>
+
+        </drawer>
     </div>
 </template>
 <script>
+    import { Drawer, Group, Cell, } from 'vux';
     export default {
+        components: {
+            Drawer,
+            Group,
+            Cell,
+        },
         data() {
             return {
-                visible: false,  // 侧边栏是否打开
+                drawerVisibility: false,  // 侧边栏是否打开
                 username: "",
             }
         },
@@ -71,16 +118,23 @@
                 return flag;
             },
             toggleMenu() {
-                this.visible = true;
+                console.log("我被点了1...");
+                this.drawerVisibility = !this.drawerVisibility;
+            },
+            takeMenu() {
+                console.log("我被点了2...")
+                if (this.drawerVisibility == true) {
+                    this.drawerVisibility = false;
+                }
             },
             showUsername(str) {
-                    let nameStr;
-                    if (str !== null && str !== '' && str.length > 4) {
-                        nameStr = str.slice(0, 4) + "···";
-                    } else {
-                        nameStr = str;
-                    }
-                    return nameStr;
+                let nameStr;
+                if (str !== null && str !== '' && str.length > 4) {
+                    nameStr = str.slice(0, 4) + "···";
+                } else {
+                    nameStr = str;
+                }
+                return nameStr;
             },
             checkLogin() {
                 this.$http.post(this.host + "/uc/check/login", {}).then(response => {
@@ -146,7 +200,23 @@
         /*margin-right: 15px;*/
     }
     .menu {
-        /*display: inline;*/
         float: right;
+    }
+    .closeMenu {
+        font-size: 24px;
+        color: #7080a3;
+        float: right;
+        margin: 7px 14px 0px 0px;
+    }
+    .group_cell {
+        font-size: 14px;
+        color: #c6e9f8;
+        background: rgb(9, 33, 84);
+    }
+    .weui-cell:before {
+        border-top: 0px solid #808695;
+    }
+    .drawerContent /deep/ .weui-cells:after {
+        border-bottom: 4px solid #D9D9D9;
     }
 </style>
