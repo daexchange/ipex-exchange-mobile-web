@@ -52,16 +52,16 @@
 		<div class="page2nav">
           <ul class="brclearfix"style="width: 100%; padding: 0.5em 0;">
             <li @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}">
-              <a href=" "><img src="../../assets/images/homeicon-fabijiaoyi.svg" ><span>法币交易</span></a>
+              <router-link to="/exchange"><img src="../../assets/images/homeicon-bibijiaoyi.svg" ><span>币币交易</span></router-link>
+            </li>
+            <li @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}">
+              <router-link to="/otc/trade/ETH"><img src="../../assets/images/homeicon-fabijiaoyi.svg" ><span>法币交易</span></router-link>
             </li>
 		    <li @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}">
-              <a href=" "><img src="../../assets/images/homeicon-fabuguanggao.svg" ><span>广告发布</span></a>
+              <router-link to="/uc/ad/create"><img src="../../assets/images/homeicon-fabuguanggao.svg" ><span>广告发布</span></router-link>
             </li>
             <li @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}">
-              <a href=" "><img src="../../assets/images/homeicon-wodeguanggao.svg" ><span>我的广告</span></a>
-            </li>
-            <li @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}">
-              <a href=" "><img src="../../assets/images/homeicon-bibijiaoyi.svg" ><span>币币交易</span></a>
+              <router-link to="/uc/ad"><img src="../../assets/images/homeicon-wodeguanggao.svg" ><span>我的广告</span></router-link>
             </li>
 		  </ul>
         </div>
