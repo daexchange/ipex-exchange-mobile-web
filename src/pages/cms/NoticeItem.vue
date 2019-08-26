@@ -129,12 +129,12 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 280px;
+    height: 120px;
     background: linear-gradient(to right, #001a40, #000109);
     background-image: url("../../assets/images/notice_banner.png");
     background-size: 100% 100%;
     color: #fff;
-    font-size: 40px;
+    font-size: 32px;
   }
   .content-wrap {
     position: relative;
