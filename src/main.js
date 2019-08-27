@@ -12,10 +12,14 @@ import 'iview/dist/styles/iview.css';
 import App from './App.vue';
 import Api from './config/api';
 import $ from '@js/jquery.min.js';
-var moment = require('moment');
 import { Toast } from 'vux';
+import Vant from 'vant';
+import 'vant/lib/index.css';
 
 
+
+Vue.use(Vant);
+var moment = require('moment');
 import util from './assets/js/util.js'; //乘除方法，js的算数运算真是SB
 // import './assets/css/theme.less';//重置iview主题颜色
 

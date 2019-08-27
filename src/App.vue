@@ -27,7 +27,7 @@
                     </cell>
                 </Group>
                 <Group gutter="0px" class="group_cell_member">
-                    <cell link="/uc/safe" title="个人中心" @click.native="toggleMenu" class="group_cell">
+                    <cell link="/memberCenter" title="个人中心" @click.native="toggleMenu" class="group_cell">
                         <Icon type="md-person" size="22" slot="icon" style="margin-right: 6px"/>
                     </cell>
                 </Group>

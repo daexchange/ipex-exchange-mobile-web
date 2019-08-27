@@ -3,6 +3,7 @@
 // import tradingcenter from '../pages/otc/TradingCenter'
 // import ordermanagement from '../pages/uc/OrderManagement'
 import membercenter from '../pages/uc/MemberCenter'
+import membercen from '../pages/uc/MemberCen'
 import tradeInfo from '../pages/otc/TradeInfo'
 import checkuser from '../pages/otc/CheckUser'
 import chat from '../pages/otc/Chat'
@@ -90,6 +91,10 @@ export default [
                 component: OtcTrade
             }
         ]
+    },
+    {
+        path: '/memberCenter',
+        component: membercen,
     },
     {
         path: '/uc',
