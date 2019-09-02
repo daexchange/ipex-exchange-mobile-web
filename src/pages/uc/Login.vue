@@ -242,7 +242,6 @@
             captcha1.show(); // 显示验证码
         },
         success() {
-            console.log(123456)
             this.getVerificationCode();
         },
         getVerificationCode() {
