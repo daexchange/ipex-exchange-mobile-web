@@ -7,7 +7,63 @@
             </div>
             <div style="height: 450px">
                 <div class="tabPage1" style="float: left; width: 50%">
-                    <Tabs value="name1" size="small" :animated="false">
+                    <van-tabs v-model="active" background="#2a2c39" color="#fff" title-active-color="#fff">
+                        <van-tab title="买入(BTC)">
+                            <ButtonGroup style="margin: 10px 10px 0px 10px">
+                                <Button type="primary" style="width: 84px">
+                                    限价
+                                </Button>
+                                <Button type="primary" style="width: 84px">
+                                    市价
+                                </Button>
+                            </ButtonGroup>
+                            <div class="input_button" style="width: 190px; margin: 20px 10px">
+                                <Input size="large" placeholder="买入价" style="width: 170px;"/>
+                                <Input size="large" placeholder="买入量" style="width: 170px; margin-top: 20px"/>
+                                <ButtonGroup style="margin-top: 20px">
+                                    <Button disabled style="width: 43px">25%</Button>
+                                    <Button disabled style="width: 43px">50%</Button>
+                                    <Button disabled style="width: 43px">75%</Button>
+                                    <Button disabled style="width: 43px">100%</Button>
+                                </ButtonGroup>
+                                <div style="font-size: 14px; color: #d5e8fc; margin: 20px">
+                                    交易额：<br>&#45;&#45; USDT
+                                </div>
+                                <div style="font-size: 14px; color: #d5e8fc; margin: 20px">
+                                    可用：<br>0.00 USDT
+                                </div>
+                                <Button type="primary" style="width: 170px">买入</Button>
+                            </div>
+                        </van-tab>
+                        <van-tab title="卖出(BTC)">
+                            <ButtonGroup style="margin: 10px 10px 0px 10px">
+                                <Button type="primary" style="width: 84px">
+                                    限价
+                                </Button>
+                                <Button type="primary" style="width: 84px">
+                                    市价
+                                </Button>
+                            </ButtonGroup>
+                            <div class="input_button" style="width: 190px; margin: 20px 10px">
+                                <Input size="large" placeholder="卖出价" style="width: 170px;"/>
+                                <Input size="large" placeholder="卖出量" style="width: 170px; margin-top: 20px"/>
+                                <ButtonGroup style="margin-top: 20px;">
+                                    <Button disabled style="width: 43px">25%</Button>
+                                    <Button disabled style="width: 43px">50%</Button>
+                                    <Button disabled style="width: 43px">75%</Button>
+                                    <Button disabled style="width: 43px">100%</Button>
+                                </ButtonGroup>
+                                <div style="font-size: 14px; color: #d5e8fc; margin: 20px">
+                                    交易额：<br>&#45;&#45; USDT
+                                </div>
+                                <div style="font-size: 14px; color: #d5e8fc; margin: 20px">
+                                    可用：<br>0.00 USDT
+                                </div>
+                                <Button type="primary" @click="showBidPlate" style="width: 170px">卖出</Button>
+                            </div>
+                        </van-tab>
+                    </van-tabs>
+                    <!--<Tabs value="name1" size="small" :animated="false">
                         <TabPane label="买入(BTC)" name="name1">
                             <ButtonGroup style="margin: 10px 10px 0px 10px">
                                 <Button type="primary" style="width: 84px">
@@ -27,7 +83,7 @@
                                     <Button disabled style="width: 43px">100%</Button>
                                 </ButtonGroup>
                                 <div style="font-size: 14px; color: #d5e8fc; margin: 20px">
-                                    交易额：<br>-- USDT
+                                    交易额：<br>&#45;&#45; USDT
                                 </div>
                                 <div style="font-size: 14px; color: #d5e8fc; margin: 20px">
                                     可用：<br>0.00 USDT
@@ -54,7 +110,7 @@
                                     <Button disabled style="width: 43px">100%</Button>
                                 </ButtonGroup>
                                 <div style="font-size: 14px; color: #d5e8fc; margin: 20px">
-                                    交易额：<br>-- USDT
+                                    交易额：<br>&#45;&#45; USDT
                                 </div>
                                 <div style="font-size: 14px; color: #d5e8fc; margin: 20px">
                                     可用：<br>0.00 USDT
@@ -62,7 +118,7 @@
                                 <Button type="primary" @click="showBidPlate" style="width: 170px">卖出</Button>
                             </div>
                         </TabPane>
-                    </Tabs>
+                    </Tabs>-->
                 </div>
                 <div class="table_wap" style="float: right; width: 50%">
                     <Table class="data_table" size="small" v-show="selectedPlate!='buy'" @on-current-change="buyPlate" highlight-row ref="currentRowTable" :columns="plate.columns" :data="plate.askRows"></Table>
@@ -72,7 +128,7 @@
                         <span v-else-if="currentCoin.change<0" class="sell">↓</span>
                         <span class="price-cny"> ≈ {{currentCoin.usdRate*CNYRate | toFixed(2)}} CNY</span>
                     </div>
-                    <Table class="data_table" size="small" v-show="selectedPlate!='sell'" @on-current-change="sellPlate" highlight-row ref="currentRowTable" :columns="plate.columns" :data="plate.bidRoww"></Table>-->
+                    <Table class="data_table" size="small" v-show="selectedPlate!='sell'" @on-current-change="sellPlate" highlight-row ref="currentRowTable" :columns="plate.columns" :data="plate.bidRoww"></Table>
                 </div>
             </div>
         </div>
