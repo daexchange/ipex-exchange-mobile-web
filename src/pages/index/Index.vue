@@ -1384,8 +1384,6 @@ export default {
   }
 }
 </style>
-
-
 <style>
 .section .ivu-carousel-dots-inside {
   bottom: 20px;

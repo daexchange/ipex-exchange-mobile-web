@@ -2,13 +2,13 @@
     <div style="background: #1d293a;">
         <div style="width: 100%">
             <div style="padding: 10px; height: 40px; color: #c6e9f8">
-                <div style="float: left; font-size: 18px">BTC/USDT</div>
+                <div style="float: left; font-size: 18px">TLM/ETH</div>
                 <div style="float: right; font-size: 18px">查看行情</div>
             </div>
             <div style="height: 450px">
                 <div class="tabPage1" style="float: left; width: 50%">
                     <van-tabs v-model="active" background="#2a2c39" color="#fff" title-active-color="#fff">
-                        <van-tab title="买入(BTC)">
+                        <van-tab title="买入(TLM)">
                             <ButtonGroup style="margin: 10px 10px 0px 10px">
                                 <Button type="primary" style="width: 84px">
                                     限价
@@ -27,15 +27,15 @@
                                     <Button disabled style="width: 43px">100%</Button>
                                 </ButtonGroup>
                                 <div style="font-size: 14px; color: #d5e8fc; margin: 20px">
-                                    交易额：<br>&#45;&#45; USDT
+                                    交易额：<br>&#45;&#45; ETH
                                 </div>
                                 <div style="font-size: 14px; color: #d5e8fc; margin: 20px">
-                                    可用：<br>0.00 USDT
+                                    可用：<br>0.00 ETH
                                 </div>
                                 <Button type="primary" style="width: 170px">买入</Button>
                             </div>
                         </van-tab>
-                        <van-tab title="卖出(BTC)">
+                        <van-tab title="卖出(TLM)">
                             <ButtonGroup style="margin: 10px 10px 0px 10px">
                                 <Button type="primary" style="width: 84px">
                                     限价
@@ -54,10 +54,10 @@
                                     <Button disabled style="width: 43px">100%</Button>
                                 </ButtonGroup>
                                 <div style="font-size: 14px; color: #d5e8fc; margin: 20px">
-                                    交易额：<br>&#45;&#45; USDT
+                                    交易额：<br>&#45;&#45; ETH
                                 </div>
                                 <div style="font-size: 14px; color: #d5e8fc; margin: 20px">
-                                    可用：<br>0.00 USDT
+                                    可用：<br>0.00 ETH
                                 </div>
                                 <Button type="primary" @click="showBidPlate" style="width: 170px">卖出</Button>
                             </div>

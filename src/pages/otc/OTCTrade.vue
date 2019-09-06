@@ -42,6 +42,17 @@
             color: #fff;
         }
     }
+    .table-responsive /deep/ .ivu-table {
+        color: #969799;
+    }
+
+    .table-responsive /deep/ .ivu-table td {
+        background-color: #192330;
+    }
+
+    .table-responsive /deep/ .ivu-table th {
+        background-color: #27313e;
+    }
 </style>
 <style lang="scss">
     #List .nav-right {
@@ -883,30 +894,30 @@
                                 return h("div", innerCNT);
                             }
                         },
-                        {
-                            title: self.$t("otc.volume"),
-                            key: "transactions",
-                            width:100,
-                            align:"center"
-                        },
-                        {
+                         /*{
+                             title: self.$t("otc.volume"),
+                             key: "transactions",
+                             width:100,
+                             align:"center"
+                         },*/
+                        /*{
                             title: self.$t("otc.paymethod"),
                             key: "payMode",
                             align:"center",
                             // width:130
-                        },
+                        },*/
                         {
                             align:"center",
                             title: self.$t("otc.amount"),
                             key: "remainAmount"
                         },
-                        {
+                        /*{
                             title:"限额",
                             align:'center',
                             render:(h, params)=>{
                                 return h('div',{},params.row.minLimit + "-" + params.row.maxLimit + "CNY")
                             }
-                        },
+                        },*/
                         {
                             title:"单价",
                             align:'center',
@@ -944,7 +955,7 @@
                         {
                             title: self.$t("otc.operate"),
                             key: "buyBtn",
-                            width:70,
+                            width:110,
                             align:"center",
                             render: function(h, params) {
                                 return h("p", [
