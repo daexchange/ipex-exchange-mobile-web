@@ -22,7 +22,7 @@
                     <van-cell title="委托历史" is-link to="index" />
                 </van-collapse-item>
                 <van-collapse-item title="法币管理" name="5" size="large">
-                    <van-cell title="我的广告" is-link to="index" />
+                    <van-cell title="我的广告" is-link to="/myadver" />
                     <van-cell title="我的订单" is-link to="index" />
                 </van-collapse-item>
             </van-collapse>

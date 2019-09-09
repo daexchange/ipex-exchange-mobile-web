@@ -184,7 +184,7 @@ export default {
           title: self.$t("service.favor"),
           align: "center",
           key: "collection",
-          width: 60,
+          width: 50,
           render: (h, params) => {
             let flag = this.isLogin;
             return h("Icon", {
@@ -231,7 +231,7 @@ export default {
           title: self.$t("service.NewPrice"),
           align: "center",
           key: "price",
-          minWidth:120,
+          minWidth:100,
           sortable: true,
           sortMethod: function(a, b, type) {
             let a1 = parseFloat(a);
@@ -297,7 +297,7 @@ export default {
           title: self.$t("service.Change"),
           align: "center",
           key: "rose",
-          minWidth:70,
+          minWidth: 70,
           sortable: true,
           sortMethod: function(a, b, type) {
             let a1 = a.replace(/[^\d|.|-]/g, "") - 0;
@@ -322,7 +322,7 @@ export default {
             );
           }
         },
-        {
+        /*{
           title: self.$t("service.high"),
           align: "center",
           key: "high",
@@ -353,7 +353,7 @@ export default {
               return b1 - a1;
             }
           }
-        },
+        },*/
         // {
         //   title: self.$t("service.OpenPrice"),
         //   align: "center",
@@ -371,7 +371,7 @@ export default {
         //   }
         // },
 
-        {
+        /*{
           title: self.$t("service.PriceTrend"),
           align: "center",
           render: function(h, params) {
@@ -416,12 +416,12 @@ export default {
               }
             });
           }
-        },
+        },*/
         {
           title: self.$t("service.Exchange"),
           // align: "center",
           key: "buyBtn",
-          width: 60,
+          width: 50,
           render: function(h, params) {
             return h("div", [
               h("img", {
