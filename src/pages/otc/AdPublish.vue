@@ -126,6 +126,7 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
   data() {
@@ -706,6 +707,7 @@ export default {
   }
 };
 </script>
+
 <style>
 .my_ad_container .my_ad_container_spin.ivu-spin-fix .ivu-spin-main {
   top: 200px;

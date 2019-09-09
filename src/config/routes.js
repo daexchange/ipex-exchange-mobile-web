@@ -53,6 +53,7 @@ import userAgreement from '../pages/cms/UserAgreement'
 import legalcurrencymoney from '../components/uc/legalcurrencymoney'
 import legalcurrencyrecord from '../components/uc/legalcurrencyrecord'
 import transfer from '../components/uc/transfer'
+import CreateAd from '../pages/otc/CreateAd'
 
 // 币理财
 // import Blc from '../pages/blc/Bilicai'
@@ -83,6 +84,10 @@ export default [
     { path: '/notice/index', component: noticeitem },
     { path: '/userAgreement', component: userAgreement },
     { path: '*', component: Index },
+    {
+        path: '/create',
+        component: CreateAd
+    },
     {
         path: '/otc',
         component: OTCMain,
@@ -135,10 +140,10 @@ export default [
                 path: 'ad',
                 component: OtcAd
             },
-            {
+            /*{
                 path: 'ad/create',
                 component: adPublish
-            },
+            },*/
             {
                 path: 'ad/update',
                 component: adPublish
