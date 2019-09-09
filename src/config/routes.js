@@ -54,6 +54,7 @@ import legalcurrencymoney from '../components/uc/legalcurrencymoney'
 import legalcurrencyrecord from '../components/uc/legalcurrencyrecord'
 import transfer from '../components/uc/transfer'
 import CreateAd from '../pages/otc/CreateAd'
+import MyAdver from '../components/otc/MyAdver'
 
 // 币理财
 // import Blc from '../pages/blc/Bilicai'
@@ -84,6 +85,7 @@ export default [
     { path: '/notice/index', component: noticeitem },
     { path: '/userAgreement', component: userAgreement },
     { path: '*', component: Index },
+    { path: '/myadver', component: MyAdver },
     {
         path: '/create',
         component: CreateAd

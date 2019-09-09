@@ -61,7 +61,7 @@
               <router-link to="/create"><img src="../../assets/images/homeicon-fabuguanggao.svg" ><span>广告发布</span></router-link>
             </li>
             <li @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}">
-              <router-link to="/uc/ad"><img src="../../assets/images/homeicon-wodeguanggao.svg" ><span>我的广告</span></router-link>
+              <router-link to="/myadver"><img src="../../assets/images/homeicon-wodeguanggao.svg" ><span>我的广告</span></router-link>
             </li>
 		  </ul>
         </div>

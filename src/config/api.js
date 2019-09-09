@@ -41,7 +41,7 @@ export default {
     otc: {
         coin: '/otc/coin/all', //查询支持的币种
         advertise: '/otc/advertise/page-by-unit', //获取广告
-        createAd: '/uc/ad/create', //创建广告
+        createAd: '/create', //创建广告
         adDetail: '/otc/advertise/detail'
     }
 }
