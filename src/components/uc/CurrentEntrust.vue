@@ -6,7 +6,7 @@
             </FormItem>
             <FormItem label="交易对:">
                 <Select v-model="formItem.symbol" style="width:180px;">
-                    <Option v-for="(item,index) in symbol " :value="item.symbol " :key="index">{{item.symbol}}</Option>
+                    <Option v-for="(item,index) in symbol" :value="item.symbol " :key="index">{{item.symbol}}</Option>
                 </Select>
             </FormItem>
             <FormItem label="类型: ">
