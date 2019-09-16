@@ -56,6 +56,8 @@ import transfer from '../components/uc/transfer'
 import CreateAd from '../pages/otc/CreateAd'
 import MyAdver from '../components/otc/MyAdver'
 import MyOrder from '../components/uc/MyOrders'
+import CurrentEntrust from  '../components/uc/CurrentEntrust'
+import HistoryEntrust from  '../components/uc/HistoryEntrust'
 
 // 币理财
 // import Blc from '../pages/blc/Bilicai'
@@ -88,6 +90,8 @@ export default [
     { path: '*', component: Index },
     { path: '/myadver', component: MyAdver },
     { path: '/myorder', component: MyOrder },
+    { path: '/current', component: CurrentEntrust },
+    { path: '/history', component: HistoryEntrust },
     {
         path: '/create',
         component: CreateAd

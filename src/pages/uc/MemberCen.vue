@@ -18,8 +18,8 @@
                     <van-cell title="流水" is-link to="index" />
                 </van-collapse-item>
                 <van-collapse-item title="币币管理" name="4" size="large">
-                    <van-cell title="当前委托" is-link to="index" />
-                    <van-cell title="委托历史" is-link to="index" />
+                    <van-cell title="当前委托" is-link to="/current" />
+                    <van-cell title="委托历史" is-link to="/history" />
                 </van-collapse-item>
                 <van-collapse-item title="法币管理" name="5" size="large">
                     <van-cell title="我的广告" is-link to="/myadver" />
