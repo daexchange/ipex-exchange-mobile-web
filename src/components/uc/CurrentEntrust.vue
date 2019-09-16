@@ -162,7 +162,7 @@
                     {
                         title: "成交金额",
                         key: "turnover",
-                        width: 80,
+                        width: 90,
                         render(h, params) {
                             return h(
                                 "span",
