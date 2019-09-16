@@ -57,6 +57,7 @@ import MyOrder from '../components/uc/MyOrders'
 import CurrentEntrust from  '../components/uc/CurrentEntrust'
 import HistoryEntrust from  '../components/uc/HistoryEntrust'
 import PersonalAssets from '../components/uc/PersonalAssets'
+import TransactionFlow from '../components/uc/TransactionFlow'
 
 // 币理财
 // import Blc from '../pages/blc/Bilicai'
@@ -92,6 +93,7 @@ export default [
     { path: '/current', component: CurrentEntrust },
     { path: '/history', component: HistoryEntrust },
     { path: '/personalassets', component: PersonalAssets },
+    { path: '/transationflow', component: TransactionFlow },
     {
         path: '/create',
         component: CreateAd

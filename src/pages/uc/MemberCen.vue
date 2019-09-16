@@ -15,7 +15,7 @@
                 </van-collapse-item>
                 <van-collapse-item title="法币账户" name="3" size="large">
                     <van-cell title="个人资产" is-link to="/personalassets" />
-                    <van-cell title="流水" is-link to="index" />
+                    <van-cell title="资产流水" is-link to="/transationflow" />
                 </van-collapse-item>
                 <van-collapse-item title="币币管理" name="4" size="large">
                     <van-cell title="当前委托" is-link to="/current" />
