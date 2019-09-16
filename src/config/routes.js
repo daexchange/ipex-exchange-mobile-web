@@ -43,8 +43,6 @@ import HelpDetail from '../pages/cms/HelpDetail' //帮助详情
 import OTCMain from '../pages/otc/OTCHome'
 import OtcTrade from '../pages/otc/OTCTrade'
 import OtcOrder from '../components/uc/myorder'
-import EntrustCurrent from '../components/uc/EntrustCurrent' //当前委托记录
-import EntrustHistory from '../components/uc/EntrustHistory' //历史委托记录
 import OtcAd from '../components/otc/MyAd'
 import adPublish from '../pages/otc/AdPublish'
 import identbusiness from '../pages/uc/IdentBusiness'
@@ -58,6 +56,7 @@ import MyAdver from '../components/otc/MyAdver'
 import MyOrder from '../components/uc/MyOrders'
 import CurrentEntrust from  '../components/uc/CurrentEntrust'
 import HistoryEntrust from  '../components/uc/HistoryEntrust'
+import PersonalAssets from '../components/uc/PersonalAssets'
 
 // 币理财
 // import Blc from '../pages/blc/Bilicai'
@@ -92,6 +91,7 @@ export default [
     { path: '/myorder', component: MyOrder },
     { path: '/current', component: CurrentEntrust },
     { path: '/history', component: HistoryEntrust },
+    { path: '/personalassets', component: PersonalAssets },
     {
         path: '/create',
         component: CreateAd
@@ -160,14 +160,15 @@ export default [
                 path: 'order',
                 component: OtcOrder
             },
-            {
+            /*{
                 path: 'entrust/current',
                 component: EntrustCurrent
             },
             {
                 path: 'entrust/history',
                 component: EntrustHistory
-            }, {
+            }, */
+            {
                 path: 'trade',
                 component: trade
             },
