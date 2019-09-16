@@ -58,7 +58,7 @@
                 columns: [
                     {
                         type: "expand",
-                        width: 30,
+                        width: 20,
                         render: (h, params) => {
                             return h(expandRow, {
                                 props: {
@@ -71,14 +71,15 @@
                     {
                         title: this.$t("exchange.time"),
                         key: "time",
-                        minWidth: 55,
+                        minWidth: 95,
                         render: (h, params) => {
                             return h("span", {}, this.dateFormat(params.row.time));
                         }
                     },
                     {
                         title: "交易对",
-                        key: "symbol"
+                        key: "symbol",
+                        width: 105,
                     },
                     {
                         title: "类型",
@@ -113,6 +114,7 @@
                     {
                         title: this.$t("exchange.price"),
                         key: "price",
+                        width: 110,
                         render(h, params) {
                             return h(
                                 "span",
@@ -128,6 +130,7 @@
                     {
                         title: this.$t("exchange.num"),
                         key: "amount",
+                        width: 90,
                         render(h, params) {
                             return h(
                                 "span",
@@ -143,6 +146,7 @@
                     {
                         title: this.$t("exchange.done"),
                         key: "tradedAmount",
+                        width: 80,
                         render(h, params) {
                             return h(
                                 "span",
@@ -158,6 +162,7 @@
                     {
                         title: "成交金额",
                         key: "turnover",
+                        width: 90,
                         render(h, params) {
                             return h(
                                 "span",
