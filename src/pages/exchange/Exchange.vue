@@ -20,7 +20,7 @@
                             <div class="input_button" style="width: 190px; margin: 20px 10px">
                                 <Input size="large" placeholder="买入价" style="width: 170px;"/>
                                 <Input size="large" placeholder="买入量" style="width: 170px; margin-top: 20px"/>
-                                <ButtonGroup style="margin-top: 20px">
+                                <ButtonGroup size="small" style="margin-top: 20px">
                                     <Button disabled style="width: 43px">25%</Button>
                                     <Button disabled style="width: 43px">50%</Button>
                                     <Button disabled style="width: 43px">75%</Button>
@@ -47,7 +47,7 @@
                             <div class="input_button" style="width: 190px; margin: 20px 10px">
                                 <Input size="large" placeholder="卖出价" style="width: 170px;"/>
                                 <Input size="large" placeholder="卖出量" style="width: 170px; margin-top: 20px"/>
-                                <ButtonGroup style="margin-top: 20px;">
+                                <ButtonGroup size="small" style="margin-top: 20px;">
                                     <Button disabled style="width: 43px">25%</Button>
                                     <Button disabled style="width: 43px">50%</Button>
                                     <Button disabled style="width: 43px">75%</Button>
@@ -2625,9 +2625,6 @@
     }
     .tabPage1 /deep/ .ivu-tabs-mini .ivu-tabs-tab {
         font-size: 14px;
-    }
-    .input_button /deep/ .ivu-btn>span {
-        margin-left: 0px;
     }
     .table_wap /deep/ .ivu-table th {
         background-color: #0D214D;
