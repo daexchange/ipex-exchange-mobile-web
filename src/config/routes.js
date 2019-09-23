@@ -60,6 +60,7 @@ import PersonalAssets from '../components/uc/PersonalAssets'
 import TransactionFlow from '../components/uc/TransactionFlow'
 import ExchangeAssets from '../components/uc/ExchangeAssets'
 import ExchangeFlow from '../components/uc/ExchangeFlow'
+import ExchangeRecharge from '../components/uc/ExchangeRecharge'
 
 // 币理财
 // import Blc from '../pages/blc/Bilicai'
@@ -98,6 +99,7 @@ export default [
     { path: '/transationflow', component: TransactionFlow },
     { path: '/exchangeassets', component: ExchangeAssets },
     { path: '/ExchangeFlow', component: ExchangeFlow },
+    { path: '/recharge', component: ExchangeRecharge },
     {
         path: '/create',
         component: CreateAd

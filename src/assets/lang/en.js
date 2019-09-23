@@ -135,7 +135,16 @@ module.exports = {
             amount: 'amount',
             fee: 'fee',
         },
-        realtime: 'realtime',
+		realtime: 'realtime',
+		M1: '1min',
+		M5: '5min',
+		M15: '15min',
+		M30: '30min',
+		M60: '1hour',
+		D1: '1day',
+		W1: '1week',
+		Mon1: '1month',
+		chartingLibraryLocale: 'en'
     },
     otc: {
         ad: 'Advertising',
@@ -761,6 +770,7 @@ module.exports = {
             emailcodetip: 'Enter email verification code',
         },
         safe: {
+            nicknametip: 'Please enter nickname',
             safelevel_low: 'Security Level: Low',
             safelevel_high: 'Security Level: High',
             safelevel_medium: 'Security Level: Medium',

@@ -158,6 +158,13 @@
     .ivu-table:after {
         background-color: transparent;
     }
+    /*弹窗*/
+    .ivu-modal-content {
+      background-color: #192330;
+    }
+    .ivu-modal-header p {
+        color: #fff;
+    }
 </style>
 <style scoped lang="scss">
     .app-header {
