@@ -3,7 +3,7 @@
         <div style="width: 100%">
             <div style="padding: 10px; height: 40px; color: #c6e9f8">
                 <div style="float: left; font-size: 18px">TLM/ETH</div>
-                <div style="float: right; font-size: 18px">查看行情</div>
+                <div style="float: right; font-size: 18px"><router-link to="/detail">查看行情</router-link></div>
             </div>
             <div style="height: 450px">
                 <div class="tabPage1" style="float: left; width: 50%">
