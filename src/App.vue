@@ -100,9 +100,9 @@
             },
         },
         mounted() {
-            if (!this.isMobile()) {
+            /*if (!this.isMobile()) {
                 window.location.href = "https://ipex.openserver.cn/";
-            }
+            }*/
         },
         created: function () {
             this.initialize();
