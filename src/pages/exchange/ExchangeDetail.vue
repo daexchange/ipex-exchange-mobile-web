@@ -36,8 +36,6 @@
     var Stomp = require("stompjs");
     var SockJS = require("sockjs-client");
     var moment = require("moment");
-    import TradingView from '@js/charting_library/charting_library.min.js';
-
 
     export default {
         data() {
@@ -282,6 +280,7 @@
                 }
 
                 var widget = (window.tvWidget = new TradingView.widget(config));
+
 
                 widget.onChartReady(function () {
                     document.getElementById('kline_container').childNodes[0].setAttribute('style', 'display:block;width:100%;height:100%;');
