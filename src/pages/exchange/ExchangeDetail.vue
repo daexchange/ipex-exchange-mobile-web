@@ -1,11 +1,12 @@
 <template>
     <div class="main_background">
         <div style="padding: 10px">
-            <div style="float: left">
+            <div style="float: left" @click="showPop">
                 <span style="font-size: 18px">ETH/BTC</span>
                 <div style="font-size: 18px">0.020988</div>
                 <div>≈ ¥ 1473.41</div>
             </div>
+            <van-popup v-model="show">内容</van-popup>
             <div style="float: right;font-size: 16px;text-align: right">
                 <div>24h量 42029.2096</div>
                 <div>最高价</div>
@@ -14,7 +15,7 @@
         </div>
         <hr style="margin-top: 80px">
         <div>
-            <div id="kline_container" :class="{hidden:currentImgTable==='s'}"></div>
+            <div id="kline_container" :class="{hidden:currentImgTable==='s'}" style="height: 350px"></div>
         </div>
         <div>
             <van-tabs background="#2a2c39" color="#fff" title-active-color="#fff">
@@ -33,17 +34,22 @@
 <script>
     import Datafeeds from "@js/charting_library/datafeed/bitrade.js";
     import $ from "@js/jquery.min.js";
+    import { Popup } from 'vant';
     var Stomp = require("stompjs");
     var SockJS = require("sockjs-client");
     var moment = require("moment");
 
     export default {
+        components: {
+            Popup
+        },
         data() {
             return {
+                show: true,
                 currentImgTable: "k",
                 currentCoin: {
-                    base: "",
-                    coin: "",
+                    base: "ETH",
+                    coin: "TLM",
                     symbol: "TLM/ETH"
                 },
                 plate: {
@@ -154,8 +160,13 @@
             this.init();
         },
         methods: {
+            showPop() {
+              this.show = true;
+              console.log(this.show);
+            },
             init() {
                 this.startWebsock();
+                this.getSymbolScale();//精度
                 this.getPlate();
                 this.getTrade();
             },
@@ -323,6 +334,25 @@
                     }
                 });
             },
+            getSymbolScale() {
+                //获取精度
+                this.$http
+                    .post(this.host + this.api.market.symbolInfo, {
+                        symbol: this.currentCoin.symbol
+                    })
+                    .then(response => {
+                        var resp = response.body;
+                        if (resp != null) {
+                            this.currentCoin.coinScale = resp.coinScale;
+                            this.currentCoin.baseCoinScale = resp.baseCoinScale;
+                            this.showCoinScale = resp.baseCoinScale;
+                            this.currentCoinScale = resp.baseCoinScale;
+                            this.baseCoinScale = resp.baseCoinScale;
+                            this.coinScale = resp.coinScale;
+                            this.symbolFee = resp.fee;
+                        }
+                    });
+            },
             //获取买卖盘信息
             getPlate() {
                 let params = {};
@@ -418,7 +448,7 @@
 <style scoped>
     .main_background {
         background-color: #192330;
-        height: 600px;
+        /*height: 600px;*/
         /*padding: 10px;*/
         color: #fff;
     }
