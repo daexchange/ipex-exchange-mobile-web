@@ -2,15 +2,20 @@
     <div style="background: #1d293a;">
         <div style="width: 100%">
             <div style="padding: 10px; height: 40px; color: #c6e9f8">
-                <div style="float: left; font-size: 18px">TLM/ETH</div>
+                <router-link to="/symbol">
+                    <div style="float: left; font-size: 18px">
+                        {{ currentCoin.symbol }} <Icon type="md-arrow-round-forward" />
+                    </div>
+                </router-link>
                 <div style="float: right; font-size: 18px">
-                    <router-link to="/detail">查看行情</router-link>
+                    <Icon type="ios-stats" />
+                    <router-link :to=" '/detail/'+ link ">查看行情</router-link>
                 </div>
             </div>
             <div style="height: 450px">
                 <div class="tabPage1" style="float: left; width: 50%">
                     <van-tabs background="#2a2c39" color="#fff" title-active-color="#fff">
-                        <van-tab title="买入(TLM)">
+                        <van-tab :title=" '买入(' +  currentCoin.coin  + ')' ">
                             <ButtonGroup style="margin: 10px 10px 0px 10px">
                                 <Button v-model="priceDeal" type="primary" style="width: 84px"
                                         @click="changeTransType(true)">
@@ -41,7 +46,7 @@
                                 <Button type="primary" style="width: 170px" @click="buy">买入</Button>
                             </div>
                         </van-tab>
-                        <van-tab title="卖出(TLM)">
+                        <van-tab :title=" '卖出(' +  currentCoin.coin  + ')' ">
                             <ButtonGroup style="margin: 10px 10px 0px 10px">
                                 <Button v-model="priceDeal" type="primary" style="width: 84px"
                                         @click="changeTransType(true)">
@@ -98,6 +103,11 @@
                 </TabPane>
             </Tabs>
         </div>
+        <van-popup v-model="show">
+            <div>
+                哈哈
+            </div>
+        </van-popup>
     </div>
 </template>
 
@@ -117,6 +127,7 @@
         data() {
             let self = this;
             return {
+                link: '',
                 CNYPrice: null,
                 showHeader: false,
                 priceDeal: true,// 定义一个变量表示买入限价交易或者市价交易
@@ -146,7 +157,7 @@
                             title: '价格',
                             key: 'price',
                             align: 'center',
-                            //width: 63,
+                            //width: 105,
                         },
                         {
                             title: '数量',
@@ -160,7 +171,7 @@
                             title: '价格',
                             key: 'price',
                             align: 'center',
-                            //width: 63,
+                            //width: 105,
                         },
                         {
                             title: '数量',
@@ -270,7 +281,20 @@
             this.init();
         },
         methods: {
+            showPopup() {
+              this.show = true;
+              console.log(this.show);
+            },
             init() {
+                this.link = this.$route.params[0];
+                if (this.$route.params[0] == undefined) {
+                    // this.$router.push("/exchange/" + this.defaultPath);
+                    this.$route.params[0] = this.defaultPath;
+                }
+                let splitSymbol = this.link.split("_");
+                this.currentCoin.coin = splitSymbol[0].toUpperCase();
+                this.currentCoin.base = splitSymbol[1].toUpperCase();
+                this.currentCoin.symbol = splitSymbol[0].toUpperCase()+"/"+splitSymbol[1].toUpperCase();
                 this.getPlate();
                 this.getCNYRate();
                 this.getSymbol();
@@ -302,8 +326,8 @@
                             for (let i = askLength; i > 0; i--) {
                                 let ask = resp.ask.items[i - 1];
                                 ask.direction = "SELL";
-                                ask.amount = ask.amount.toFixed(6);
-                                ask.price = ask.price.toFixed(6);
+                                ask.amount = ask.amount.toFixed(5);
+                                ask.price = ask.price.toFixed(5);
                                 ask.position = i;
                                 this.plate.askRows.push(ask);
                             }
@@ -311,8 +335,8 @@
                             for (let i = askLength; i > askLength - askMaxPostion; i--) {
                                 let ask = resp.ask.items[i - 1];
                                 ask.direction = "SELL";
-                                ask.amount = ask.amount.toFixed(6);
-                                ask.price = ask.price.toFixed(6);
+                                ask.amount = ask.amount.toFixed(5);
+                                ask.price = ask.price.toFixed(5);
                                 ask.position = i;
                                 this.plate.askRows.push(ask);
                             }
@@ -332,8 +356,8 @@
                             for (let i = 0; i < bidLength; i++) {
                                 let bid = resp.bid.items[i];
                                 bid.direction = "BUY";
-                                bid.amount = bid.amount.toFixed(6);
-                                bid.price = bid.price.toFixed(6);
+                                bid.amount = bid.amount.toFixed(5);
+                                bid.price = bid.price.toFixed(5);
                                 bid.position = i + 1;
                                 this.plate.bidRows.push(bid);
                             }
@@ -341,8 +365,8 @@
                             for (let i = bidLength - askMaxPostion; i < bidLength; i++) {
                                 let bid = resp.bid.items[i];
                                 bid.direction = "BUY";
-                                bid.amount = bid.amount.toFixed(6);
-                                bid.price = bid.price.toFixed(6);
+                                bid.amount = bid.amount.toFixed(5);
+                                bid.price = bid.price.toFixed(5);
                                 bid.position = i + 1;
                                 this.plate.bidRows.push(bid);
                             }
@@ -881,5 +905,11 @@
 
     .bottom_page /deep/ .ivu-table td, .ivu-table th {
         border-bottom: 0px solid #2a2c39;
+    }
+    .buy {
+        color: #00b275;
+    }
+    .sell {
+        color: #f15057;
     }
 </style>

@@ -62,6 +62,7 @@ import ExchangeAssets from '../components/uc/ExchangeAssets'
 import ExchangeFlow from '../components/uc/ExchangeFlow'
 import ExchangeRecharge from '../components/uc/ExchangeRecharge'
 import ExchangeDetail from '../pages/exchange/ExchangeDetail'
+import SymbolList from '../pages/exchange/SymbolList'
 
 // 币理财
 // import Blc from '../pages/blc/Bilicai'
@@ -101,7 +102,8 @@ export default [
     { path: '/exchangeassets', component: ExchangeAssets },
     { path: '/ExchangeFlow', component: ExchangeFlow },
     { path: '/recharge', component: ExchangeRecharge },
-    { path: '/detail', component: ExchangeDetail },
+    { path: '/detail/*', component: ExchangeDetail },
+    { path: '/symbol', component: SymbolList },
     {
         path: '/create',
         component: CreateAd

@@ -1,16 +1,33 @@
 <template>
     <div class="main_background">
         <div style="padding: 10px">
-            <div style="float: left" @click="showPop">
-                <span style="font-size: 18px">ETH/BTC</span>
-                <div style="font-size: 18px">0.020988</div>
-                <div>≈ ¥ 1473.41</div>
+            <div style="float: left">
+                <span style="font-size: 18px">{{ currentCoin.symbol }}</span>
+                <!--<div style="font-size: 18px">0.020988</div>
+                <div>≈ ¥ 1473.41</div>-->
+                <div style="font-size: 24px; font-weight: bold">
+                    <span :class="{buy:currentSymbol.change>0, sell:currentSymbol.change<0}">{{currentSymbol.close}}</span>
+                    <span v-if="currentSymbol.change>0" class="buy">
+                        <Icon type="md-arrow-up" size="28"/>
+                    </span>
+                    <span v-else-if="currentSymbol.change<0" class="sell">
+                        <Icon type="md-arrow-down" size="28"/>
+                    </span>
+                </div>
+                <div class="price-cny">
+                    ≈ {{currentSymbol.close * CNYPrice | toFixed(2)}} CNY &nbsp;&nbsp;
+                    <span :class="{buy:currentSymbol.change>0, sell:currentSymbol.change<0}">{{ currentSymbol.rose }}</span>
+                </div>
             </div>
-            <van-popup v-model="show">内容</van-popup>
             <div style="float: right;font-size: 16px;text-align: right">
-                <div>24h量 42029.2096</div>
-                <div>最高价</div>
-                <div>最低价</div>
+                <div>
+                    24h量 {{ currentSymbol.volume }}</div>
+                <div>
+                    最高价 {{ currentSymbol.high }}
+                </div>
+                <div>
+                    最低价 {{ currentSymbol.low }}
+                </div>
             </div>
         </div>
         <hr style="margin-top: 80px">
@@ -19,11 +36,11 @@
         </div>
         <div>
             <van-tabs background="#2a2c39" color="#fff" title-active-color="#fff">
-                <van-tab title="盘口" class="table_tab">
+                <van-tab title="盘口" class="table_tab1">
                     <Table size="small" :columns="plate.columnsBuy" :data="plate.askRows" style="float: left"></Table>
                     <Table size="small" :columns="plate.columnsSell" :data="plate.bidRows" style="float: right"></Table>
                 </van-tab>
-                <van-tab title="实时成交">
+                <van-tab title="实时成交" class="table_tab2">
                     <Table size="small" :columns="plate.columnsTrade" :data="plate.tradeRows"></Table>
                 </van-tab>
             </van-tabs>
@@ -34,23 +51,20 @@
 <script>
     import Datafeeds from "@js/charting_library/datafeed/bitrade.js";
     import $ from "@js/jquery.min.js";
-    import { Popup } from 'vant';
     var Stomp = require("stompjs");
     var SockJS = require("sockjs-client");
     var moment = require("moment");
 
     export default {
-        components: {
-            Popup
-        },
         data() {
             return {
-                show: true,
+                currentSymbol: {},
                 currentImgTable: "k",
+                baseCoinScale: 2,
                 currentCoin: {
-                    base: "ETH",
-                    coin: "TLM",
-                    symbol: "TLM/ETH"
+                    base: "",
+                    coin: "",
+                    symbol: ""
                 },
                 plate: {
                     maxPostion: 20,
@@ -58,20 +72,20 @@
                         {
                             title: '买入',
                             type: 'index',
-                            width: 60,
+                            width: 29,
                             align: 'center'
                         },
                         {
                             title: '数量',
                             key: 'amount',
                             align: 'center',
-                            width: 62,
+                            width: 78,
                         },
                         {
                             title: '价格',
                             key: 'price',
                             align: 'center',
-                            width: 63,
+                            width: 78,
                         },
                     ],
                     columnsSell: [
@@ -79,18 +93,18 @@
                             title: '价格',
                             key: 'price',
                             align: 'center',
-                            width: 63,
+                            width: 78,
                         },
                         {
                             title: '数量',
                             key: 'amount',
                             align: 'center',
-                            width: 62,
+                            width: 78,
                         },
                         {
                             title: '卖出',
                             type: 'index',
-                            width: 60,
+                            width: 29,
                             align: 'center'
                         },
                     ],
@@ -154,21 +168,29 @@
                     bidRows: [],
                     tradeRows: [],
                 },
+                CNYPrice: null,
             }
         },
         created: function() {
             this.init();
         },
         methods: {
-            showPop() {
-              this.show = true;
-              console.log(this.show);
-            },
             init() {
+                let params = this.$route.params[0];
+                if (params == undefined) {
+                    // this.$router.push("/exchange/" + this.defaultPath);
+                    params = this.defaultPath;
+                }
+                let splitSymbol = params.split("_");
+                this.currentCoin.coin = splitSymbol[0].toUpperCase();
+                this.currentCoin.base = splitSymbol[1].toUpperCase();
+                this.currentCoin.symbol = splitSymbol[0].toUpperCase()+"/"+splitSymbol[1].toUpperCase();
                 this.startWebsock();
                 this.getSymbolScale();//精度
                 this.getPlate();
                 this.getTrade();
+                this.getCNYRate();
+                this.getSymbol();
             },
             startWebsock() {
                 var that = this;
@@ -375,8 +397,8 @@
                             for (let i = askLength; i > 0; i--) {
                                 let ask = resp.ask.items[i - 1];
                                 ask.direction = "SELL";
-                                ask.amount = ask.amount.toFixed(3);
-                                ask.price = ask.price.toFixed(3);
+                                ask.amount = ask.amount.toFixed(6);
+                                ask.price = ask.price.toFixed(6);
                                 ask.position = i;
                                 this.plate.askRows.push(ask);
                             }
@@ -384,8 +406,8 @@
                             for (let i = askLength; i > askLength-askMaxPostion; i--) {
                                 let ask = resp.ask.items[i - 1];
                                 ask.direction = "SELL";
-                                ask.amount = ask.amount.toFixed(3);
-                                ask.price = ask.price.toFixed(3);
+                                ask.amount = ask.amount.toFixed(6);
+                                ask.price = ask.price.toFixed(6);
                                 ask.position = i;
                                 this.plate.askRows.push(ask);
                             }
@@ -405,8 +427,8 @@
                             for (let i=0; i<bidLength; i++) {
                                 let bid = resp.bid.items[i];
                                 bid.direction = "BUY";
-                                bid.amount = bid.amount.toFixed(3);
-                                bid.price = bid.price.toFixed(3);
+                                bid.amount = bid.amount.toFixed(6);
+                                bid.price = bid.price.toFixed(6);
                                 bid.position = i + 1;
                                 this.plate.bidRows.push(bid);
                             }
@@ -414,8 +436,8 @@
                             for (let i = bidLength - askMaxPostion; i<bidLength; i++) {
                                 let bid = resp.bid.items[i];
                                 bid.direction = "BUY";
-                                bid.amount = bid.amount.toFixed(3);
-                                bid.price = bid.price.toFixed(3);
+                                bid.amount = bid.amount.toFixed(6);
+                                bid.price = bid.price.toFixed(6);
                                 bid.position = i + 1;
                                 this.plate.bidRows.push(bid);
                             }
@@ -435,6 +457,74 @@
                         }
                     });
             },
+            /**
+             * 实时交易对兑换比率
+             */
+            getSymbol() {
+                //this.startWebsock();
+                let params = {
+                    //coinSymbol: this.form.coinSymbol,
+                    //basecion: this.currentCoin.base
+                };
+                //debugger
+                this.$http.post(this.host + this.api.market.thumb, params).then(response => {
+                    /*let resp = response.body;
+                    //先清空已有数据
+                    for (let i = 0; i < resp.length; i++) {
+                        let coin = resp[i];
+                        coin.base = resp[i].symbol.split("/")[1];
+                        this.coins[coin.base] = [];
+                        this.coins._map = [];
+                        this.coins.favor = [];
+                    }
+                    this.coins['tableData'] = [];
+                    for (let i = 0; i < resp.length; i++) {
+                        let coin = resp[i];
+                        coin.price = resp[i].close = resp[i].close.toFixed(
+                            this.baseCoinScale
+                        );
+                        coin.rose =
+                            resp[i].chg > 0
+                                ? "+" + (resp[i].chg * 100).toFixed(2) + "%"
+                                : (resp[i].chg * 100).toFixed(2) + "%";
+                        coin.coin = resp[i].symbol.split("/")[0];
+                        coin.base = resp[i].symbol.split("/")[1];
+                        coin.href = (coin.coin + "_" + coin.base).toLowerCase();
+                        coin.isFavor = false;
+                        this.coins._map[coin.symbol] = coin;
+                        // this.coins[coin.base].push(coin);
+                        this.coins['tableData'].push(coin);
+                        if (coin.symbol == this.currentCoin.symbol) {
+                            this.currentCoin = coin;
+                            this.form.buy.limitPrice = this.form.sell.limitPrice = coin.price;
+                        }
+                    }
+                    if (this.basecion == 'favor' && this.isLogin) {
+                        this.getFavor();
+                    }
+                    require(["../../assets/js/exchange.js"], function (e) {
+                        e.clickScTab();
+                    });*/
+                    let resp = response.body;
+                    for (let i=0; i<resp.length; i++) {
+                        if (resp[i].symbol==this.currentCoin.symbol) {
+                            resp[i].rose = resp[i].chg > 0 ? "+" + (resp[i].chg * 100).toFixed(2) + "%" : (resp[i].chg * 100).toFixed(2) + "%";
+                            this.currentSymbol = resp[i];
+                        }
+                    }
+                });
+            },
+            /**
+             * 获取人民币价格
+             */
+            getCNYRate() {
+                this.$http.get(this.host + "/uc/coin/cny-rate/"+
+                    this.currentCoin.base).then(response => {
+                    var resp = response.body;
+                    this.CNYPrice = resp.data||1;
+                })
+                // this.CNYPrice = this.getCoinCNYRate(this.basecion.toUpperCase());
+            },
             timeFormat: function (tick) {
                 return moment(tick).format("HH:mm:ss");
             },
@@ -452,8 +542,30 @@
         /*padding: 10px;*/
         color: #fff;
     }
-    .table_tab /deep/ .ivu-table-cell {
+    .table_tab1 /deep/ .ivu-table th {
+        border-bottom: 0px;
+        background-color: #0a152d;
+    }
+    .table_tab1 /deep/ .ivu-table td {
+        border-bottom: 0px;
+        background-color: #0a152d;
+    }
+    .table_tab1 /deep/ .ivu-table-cell {
         padding-left: 0px;
         padding-right: 0px;
+    }
+    .table_tab2 /deep/ .ivu-table th {
+        border-bottom: 0px;
+        background-color: #0a152d;
+    }
+    .table_tab2 /deep/ .ivu-table td {
+        border-bottom: 0px;
+        background-color: #0a152d;
+    }
+    .buy {
+        color: #00b275;
+    }
+    .sell {
+        color: #f15057;
     }
 </style>

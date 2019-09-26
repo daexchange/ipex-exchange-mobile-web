@@ -52,7 +52,7 @@
 		<div class="page2nav">
           <ul class="brclearfix"style="width: 100%; padding: 0.5em 0;">
             <li @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}">
-              <router-link to="/exchange"><img src="../../assets/images/homeicon-bibijiaoyi.svg" ><span>币币交易</span></router-link>
+              <router-link to="/exchange/tlm_eth"><img src="../../assets/images/homeicon-bibijiaoyi.svg" ><span>币币交易</span></router-link>
             </li>
             <li @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}">
               <router-link to="/otc/trade/ETH"><img src="../../assets/images/homeicon-fabijiaoyi.svg" ><span>法币交易</span></router-link>
