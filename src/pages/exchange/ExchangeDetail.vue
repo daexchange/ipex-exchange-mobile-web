@@ -37,8 +37,12 @@
         <div>
             <van-tabs background="#2a2c39" color="#fff" title-active-color="#fff">
                 <van-tab title="盘口" class="table_tab1">
-                    <Table size="small" :columns="plate.columnsBuy" :data="plate.askRows" style="float: left"></Table>
-                    <Table size="small" :columns="plate.columnsSell" :data="plate.bidRows" style="float: right"></Table>
+                    <div style="float: left;width: 50%">
+                        <Table size="small" :columns="plate.columnsBuy" :data="plate.askRows" style=""></Table>
+                    </div>
+                    <div style="float: right;width: 50%">
+                        <Table size="small" :columns="plate.columnsSell" :data="plate.bidRows" style=""></Table>
+                    </div>
                 </van-tab>
                 <van-tab title="实时成交" class="table_tab2">
                     <Table size="small" :columns="plate.columnsTrade" :data="plate.tradeRows"></Table>
@@ -72,20 +76,20 @@
                         {
                             title: '买入',
                             type: 'index',
-                            width: 29,
+                            width: 30,
                             align: 'center'
                         },
                         {
                             title: '数量',
                             key: 'amount',
                             align: 'center',
-                            width: 78,
+                            //width: 78,
                         },
                         {
                             title: '价格',
                             key: 'price',
                             align: 'center',
-                            width: 78,
+                            //width: 78,
                         },
                     ],
                     columnsSell: [
@@ -93,18 +97,18 @@
                             title: '价格',
                             key: 'price',
                             align: 'center',
-                            width: 78,
+                            //width: 78,
                         },
                         {
                             title: '数量',
                             key: 'amount',
                             align: 'center',
-                            width: 78,
+                            //width: 78,
                         },
                         {
                             title: '卖出',
                             type: 'index',
-                            width: 29,
+                            width: 30,
                             align: 'center'
                         },
                     ],
