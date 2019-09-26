@@ -147,6 +147,23 @@
                             }*/
                         },
                         {
+                            title: '方向',
+                            key: "direction",
+                            width: 60,
+                            align: 'center',
+                            render: (h, params) => {
+                                let direction, rowStyle;
+                                if (params.row.direction=='SELL') {
+                                    direction = '卖出';
+                                    rowStyle = { "color": "#f15057" };
+                                } else if (params.row.direction=='BUY') {
+                                    direction = '买入';
+                                    rowStyle = { "color": "#00b275" };
+                                }
+                                return h("span", { style: rowStyle }, direction);
+                            }
+                        },
+                        {
                             title: '数量',
                             key: "amount",
                             align: 'center',
