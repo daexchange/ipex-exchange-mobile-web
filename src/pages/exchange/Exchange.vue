@@ -103,11 +103,6 @@
                 </TabPane>
             </Tabs>
         </div>
-        <van-popup v-model="show">
-            <div>
-                哈哈
-            </div>
-        </van-popup>
     </div>
 </template>
 
@@ -884,6 +879,10 @@
         display: inline-block;
         font-size: 12px;
         color: #ccc;
+    }
+
+    .bottom_page /deep/ .ivu-tabs {
+        margin-top: 7px;
     }
 
     .bottom_page /deep/ .ivu-tabs-bar {
