@@ -63,6 +63,7 @@ import ExchangeFlow from '../components/uc/ExchangeFlow'
 import ExchangeRecharge from '../components/uc/ExchangeRecharge'
 import ExchangeDetail from '../pages/exchange/ExchangeDetail'
 import SymbolList from '../pages/exchange/SymbolList'
+import Withdrawal from  '../components/uc/Withdrawal'
 
 // 币理财
 // import Blc from '../pages/blc/Bilicai'
@@ -104,6 +105,7 @@ export default [
     { path: '/recharge', component: ExchangeRecharge },
     { path: '/detail/*', component: ExchangeDetail },
     { path: '/symbol', component: SymbolList },
+    { path: '/withdrawal', component: Withdrawal },
     {
         path: '/create',
         component: CreateAd

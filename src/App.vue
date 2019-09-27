@@ -1,6 +1,6 @@
 <template>
     <div class="page-view">
-        <drawer width="200px;" :show.sync="drawerVisibility" placement="left" :drawer-style="{'background-color':'rgb(9, 33, 84)', width: '53%', height: '667px'}">
+        <drawer width="200px;" :show.sync="drawerVisibility" placement="left" :drawer-style="{'background-color':'rgb(9, 33, 84)', width: '53%', height: screenHeight + 'px'}">
 
             <div slot="drawer" class="drawerContent">
                 <!-- 菜单内容 -->
@@ -75,6 +75,7 @@
             return {
                 drawerVisibility: false,  // 侧边栏是否打开
                 username: "",
+                screenHeight: null,
             }
         },
         watch: {
@@ -100,12 +101,13 @@
             },
         },
         mounted() {
-            /*if (!this.isMobile()) {
-                window.location.href = "https://ipex.openserver.cn/";
-            }*/
+            if (!this.isMobile()) {
+                window.location.href = "https://ipex.ipcom.io/";
+            }
         },
         created: function () {
             this.initialize();
+            this.screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
         },
         methods: {
             isMobile() {

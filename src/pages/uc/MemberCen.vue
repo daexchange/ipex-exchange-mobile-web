@@ -10,7 +10,7 @@
                     <van-cell title="个人资产" is-link to="/exchangeassets" />
                     <van-cell title="资产流水" is-link to="/ExchangeFlow" />
                     <van-cell title="充币" is-link to="/recharge" />
-                    <van-cell title="提币" is-link to="index" />
+                    <van-cell title="提币" is-link to="/withdrawal" />
                     <van-cell title="转账" is-link to="index" />
                 </van-collapse-item>
                 <van-collapse-item title="法币账户" name="3" size="large">
