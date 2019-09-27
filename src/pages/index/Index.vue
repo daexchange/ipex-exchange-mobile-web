@@ -775,7 +775,7 @@ export default {
     },
     getCNYRate() {
       this.$http
-        .post(this.host + "/market/exchange-rate/usd-cny")
+        .post(this.host + this.api.market.usdCny)
         .then(response => {
           var resp = response.body;
           this.CNYRate = resp.data;
@@ -794,7 +794,7 @@ export default {
       let param = {};
       param["sysAdvertiseLocation"] = 1;
       this.$http
-        .post(this.host + "/uc/ancillary/system/advertise", param)
+        .post(this.host + this.api.uc.advertise, param)
         .then(response => {
           var result = response.body;
           if (result.code == 0 && result.data.length > 0) {

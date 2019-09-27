@@ -36,9 +36,9 @@ Vue.use(VueI18n);
 // Vue.prototype.host = "http://47.74.216.147"; //新加坡
 // Vue.prototype.host = "http://39.104.119.155"; //测试
 // Vue.prototype.host = "http://10.20.31.178"; //测试
-// Vue.prototype.host = "http://ipex.openserver.cn";
+//Vue.prototype.host = "http://ipex.openserver.cn";
 //Vue.prototype.host = "http://127.0.0.1:6001";
-Vue.prototype.host = "https://ipex.ipcom.io";
+Vue.prototype.host = "https://mobile-ipex.ipcom.io/api";
 //Vue.prototype.host = "http://127.0.0.1:80";
 
 Vue.prototype.api = Api;

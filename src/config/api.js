@@ -5,9 +5,11 @@ export default {
     uc: { //会员中心接口
         login: '/uc/uc/login',
         check: '/uc/uc/check',
+        checkLogin: '/uc/uc/check/login',
         register: '/uc/uc/register',
         wallet: '/uc/uc/asset/wallet/',
         captcha: '/uc/uc/start/captcha',
+        advertise: "/uc/uc/ancillary/system/advertise",
         identification: '/uc/uc/approve/certified/business/status', //商家认证
         apply: '/uc/uc/approve/certified/business/apply', //商家认证申请
         announcement: '/uc/uc/announcement/page', //公告列表
@@ -16,7 +18,7 @@ export default {
     },
     market: { //币币交易行情接口
         // ws: '/market/market-ws',
-        ws: '/marketws/marketws/market-ws',
+        ws: '/marketws/market-ws',
         thumb: '/market/market/symbol-thumb',
         thumbTrend: '/market/market/symbol-thumb-trend',
         plate: '/market/market/exchange-plate', //主动查询的盘口信息
@@ -26,6 +28,7 @@ export default {
         symbolInfo: '/market/market/symbol-info',
 		indexData: "/market/market/index_info",
 		baseSymbols: "/market/market/base-symbols",
+        usdCny:"/market/market/exchange-rate/usd-cny",
 		getSymbolsThumb: '/market/market/get-symbols-thumb' //查询自选
     },
     exchange: { //币币交易委托提交与查询接口

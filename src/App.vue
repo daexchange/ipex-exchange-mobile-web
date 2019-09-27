@@ -136,7 +136,7 @@
                 return nameStr;
             },
             checkLogin() {
-                this.$http.post(this.host + "/uc/check/login", {}).then(response => {
+                this.$http.post(this.host + this.api.uc.checkLogin, {}).then(response => {
                     var result = response.body;
                     if (result.code == 0 && result.data == false) {
                         this.$store.commit("setMember", null);
