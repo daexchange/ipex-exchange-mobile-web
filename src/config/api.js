@@ -15,6 +15,8 @@ export default {
         announcement: '/uc/uc/announcement/page', //公告列表
         paydividends: "/uc/uc/bonus/user/page", //持币分红
         mylistrecord: "/uc/uc/mine/detail/", //交易挖矿详情
+        emaillogincode: '/uc/uc/email/login/code',
+        emailloginsuccesscode: '/uc/uc/email/login/success/code',
     },
     market: { //币币交易行情接口
         // ws: '/market/market-ws',

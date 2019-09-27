@@ -247,10 +247,9 @@
         getVerificationCode() {
             //this.initGtCaptcha();
             let params = {};
-            let api = "/uc/email/login/code";
             this.loading = true;
             params["email"] = this.formInline.user;
-            this.$http.post(this.host + api, params).then(response => {
+            this.$http.post(this.host + this.api.uc.emaillogincode, params).then(response => {
                 let status = response.data;
                 if (status.code !== 0) {
                     this.$Message.error(status.message);
@@ -314,10 +313,9 @@
         });
       },
       sendEmailCode(email) {
-        let api = "/uc/email/login/code";
         var params = {};
         params['email'] = email;
-        this.$http.post(this.host + api, params).then(response => {
+        this.$http.post(this.host + this.api.uc.emaillogincode, params).then(response => {
             //  设置时间锁，控制是否展示发送验证码的倒计时或发送验证码
             const TIME_COUNT = 60;
             if (!this.formInline.timer) {
@@ -349,8 +347,7 @@
           let resp = response.data;
           if (resp.code === 0) {
               // 登录成功之后，发送登录成功的邮件
-              let api = "/uc/email/login/success/code";
-              this.$http.post(this.host + api, param).then((response) =>{
+              this.$http.post(this.host + this.api.uc.emailloginsuccesscode, param).then((response) =>{
                   let resp = response.data;
                   if (resp.code !== 0) {
                       this.$Message.error(resp.message);

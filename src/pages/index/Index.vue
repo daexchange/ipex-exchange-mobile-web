@@ -66,11 +66,6 @@
 		  </ul>
         </div>
         <hr style="border-color: #4e5b85;">
-        <!--<div class="page2nav">
-          <ul class="brclearfix">
-            <li v-show="!(index==3&&!isLogin)" v-for="(item,index) in indexBtn" @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}" :key="index">{{item.text}}</li>
-          </ul>
-        </div>-->
         <div class="tabPage">
           <Tabs v-model="pane" @on-click="changeTab" :animated="false" size="small">
             <TabPane v-for="(item,index) in baseSymbols" :key="index" :name="item.name" :label="item.label"></TabPane>
@@ -81,62 +76,6 @@
           <Table v-else :columns="coins.columns" :data="dataIndex" class="tables" :disabled-hover="true" :loading="loading"></Table>
         </div>
       </div>
-     <!-- <div class="section" id="page4">
-        <ul>
-          <li>
-            <div><img src="../../assets/images/feature_safe.png" alt=""></div>
-            <p class="title">{{$t('description.title1')}}</p>
-            <p>{{$t('description.message1')}}</p>
-          </li>
-          <li>
-            <div><img src="../../assets/images/feature_fast.png" alt=""></div>
-            <p class="title">{{$t('description.title2')}}</p>
-            <p>{{$t('description.message2')}}</p>
-          </li>
-          <li>
-            <div><img src="../../assets/images/feature_experience.png" alt=""></div>
-            <p class="title">{{$t('description.title3')}}</p>
-            <p>{{$t('description.message3')}}</p>
-          </li>
-        </ul>
-      </div>
-      <div class="section" id="page5">
-        <div class="phone_image"></div>
-        <ul class="download">
-          <li class="qrcode">扫描二维码，下载APP</li>
-          <li class="wrapper">
-            <div class="download_app">
-              <img src="../../assets/images/app_andraio.png">
-            </div>
-            <div class="abstract">
-              <div class="image">
-                <Icon type="logo-android" size="30" color="#fff"/>
-              </div>
-              <div class="content">
-                <span>Android</span><br>
-                <span>仅支持4.4及以上系统</span>
-              </div>
-            </div>
-          </li>
-          <li class="wrapper">
-            <div class="download_app">
-              <img src="../../assets/images/app_ios.png">
-            </div>
-            <div class="abstract">
-              <div class="image"><Icon type="logo-apple" size="30" color="#fff"/></div>
-              <div class="content">
-                <span>iPhone</span>
-              </div>
-            </div>
-          </li>
-          &lt;!&ndash;<li>&ndash;&gt;
-          &lt;!&ndash;<a @click="donwload(0)"><img src="../../assets/images/iosdown.png" alt=""></a>&ndash;&gt;
-          &lt;!&ndash;</li>&ndash;&gt;
-          &lt;!&ndash;<li>&ndash;&gt;
-          &lt;!&ndash;<a @click="donwload(1)"><img src="../../assets/images/anddown.png" alt=""></a>&ndash;&gt;
-          &lt;!&ndash;</li>&ndash;&gt;
-        </ul>
-      </div>-->
     </div>
     <div id="onlineservice">
       <a href="http://kefu.caymanex.pro:80/im/text/15FwEk.html" target="_blank"></a>
@@ -158,7 +97,7 @@ export default {
     return {
       choseBtn: 0,
       index: 0,
-      pane: 'eth',
+      pane: 'usdt',
       baseSymbols: [],
       loading: false,
       // progress: 0,
