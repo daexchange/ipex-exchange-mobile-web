@@ -14,7 +14,7 @@
             return {
                 pane: '',
                 baseSymbols: [],
-                baseCoin: 'ETH',
+                baseCoin: 'USDT',
                 symbolList: {
                     columns: [
                         {
@@ -159,10 +159,10 @@
         background-color: #0a152d;
     }*/
     .symbol_main /deep/ .ivu-tabs-mini .ivu-tabs-tab {
-        font-size: 14px;
+        font-size: 16px;
     }
     .symbol_main /deep/ .ivu-tabs-bar {
-        margin-bottom: 0px;
+        margin-bottom: 10px;
         border-bottom: 1px solid #5e5e5e;
     }
     .symbol_main /deep/ .ivu-tabs-ink-bar {

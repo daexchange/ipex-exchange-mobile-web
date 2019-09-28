@@ -38,10 +38,10 @@
                                     <Button disabled style="width: 43px">100%</Button>
                                 </ButtonGroup>
                                 <div style="font-size: 14px; color: #d5e8fc; margin: 20px">
-                                    交易额：<br>{{buyingRate * purchases }} ETH
+                                    交易额：<br>{{buyingRate * purchases }} {{ currentCoin.base }}
                                 </div>
                                 <div style="font-size: 14px; color: #d5e8fc; margin: 20px">
-                                    可用：<br v-model="wallet.base">{{this.wallet.base ? this.wallet.base : 0.00}} ETH
+                                    可用：<br v-model="wallet.base">{{this.wallet.base ? this.wallet.base : 0.00}} {{ currentCoin.base }}
                                 </div>
                                 <Button type="primary" style="width: 170px" @click="buy">买入</Button>
                             </div>
@@ -69,10 +69,10 @@
                                     <Button disabled style="width: 43px">100%</Button>
                                 </ButtonGroup>
                                 <div style="font-size: 14px; color: #d5e8fc; margin: 20px">
-                                    交易额：<br>{{sellingPrice * sellingPurchases}} ETH
+                                    交易额：<br>{{sellingPrice * sellingPurchases}} {{ currentCoin.base }}
                                 </div>
                                 <div style="font-size: 14px; color: #d5e8fc; margin: 20px">
-                                    可用：<br v-model="wallet.base"> {{this.wallet.base ? this.wallet.base : 0.00}} ETH
+                                    可用：<br v-model="wallet.base"> {{this.wallet.base ? this.wallet.base : 0.00}} {{ currentCoin.coin }}
                                 </div>
                                 <Button type="primary" @click="sell" style="width: 170px">卖出</Button>
                             </div>
