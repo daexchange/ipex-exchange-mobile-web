@@ -17,6 +17,10 @@ export default {
         mylistrecord: "/uc/uc/mine/detail/", //交易挖矿详情
         emaillogincode: '/uc/uc/email/login/code',
         emailloginsuccesscode: '/uc/uc/email/login/success/code',
+        coininfo: "/uc/uc/withdraw/support/coin/info",
+        withdrawrecord: '/uc/uc/withdraw/record',
+        withdrawapplycode: '/uc/uc/withdraw/apply/code',
+        emailwithdrawcode: '/uc/uc/email/withdraw/code',
     },
     market: { //币币交易行情接口
         // ws: '/market/market-ws',
@@ -34,14 +38,14 @@ export default {
 		getSymbolsThumb: '/market/market/get-symbols-thumb' //查询自选
     },
     exchange: { //币币交易委托提交与查询接口
-        orderAdd: '/exchange/exchange/order/add', //提交订单接口
-        current: '/exchange/exchange/order/current', //当前委托接口
-        history: '/exchange/exchange/order/history', //历史委托接口
-        detail: '/exchange/exchange/order/detail/', //详细订单接口
-        favorFind: '/exchange/exchange/favor/find', //查询自选
-        favorAdd: '/exchange/exchange/favor/add', //添加自选
-        favorDelete: '/exchange/exchange/favor/delete', //删除自选
-        orderCancel: '/exchange/exchange/order/cancel' //取消委托
+        orderAdd: '/exchange-api/exchange/order/add', //提交订单接口
+        current: '/exchange-api/exchange/order/current', //当前委托接口
+        history: '/exchange-api/exchange/order/history', //历史委托接口
+        detail: '/exchange-api/exchange/order/detail/', //详细订单接口
+        favorFind: '/exchange-api/exchange/favor/find', //查询自选
+        favorAdd: '/exchange-api/exchange/favor/add', //添加自选
+        favorDelete: '/exchange-api/exchange/favor/delete', //删除自选
+        orderCancel: '/exchange-api/exchange/order/cancel' //取消委托
     },
     otc: {
         coin: '/otc/otc/coin/all', //查询支持的币种
