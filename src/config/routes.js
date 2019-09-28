@@ -26,7 +26,6 @@ import trade from '../components/uc/MinTrade'
 import paydividends from '../components/uc/PayDividends'
 import invitingmining from '../components/uc/InvitingMin'
 import recharge from '../components/uc/Recharge'
-import withdraw from '../components/uc/Withdraw'
 import safe from '../components/uc/Safe'
 import account from '../components/uc/Account'
 import withdrawAddr from '../components/uc/WithdrawAddress'
@@ -149,10 +148,6 @@ export default [
             {
                 path: 'recharge',
                 component: recharge
-            },
-            {
-                path: 'withdraw',
-                component: withdraw
             },
             {
                 path: 'withdraw/address',
