@@ -145,31 +145,13 @@
             //this.initGtCaptcha();
         },*/
         methods: {
-            /*getCountryList() {
-                let api = '/uc/support/country';
-                this.$http.post(this.host + api).then(response => {
-                    let countryList = response.data.data;
-                    this.countryList = countryList;
-                    // console.log(countryList)
-                })
-            },*/
             getVerificationCode() {
                 //this.initGtCaptcha();
                 let tab = this.tab;
                 let params = {};
-                let api;
-                if (tab === 'key1') {
-                    this.formItem1.loading = true;
-                    params["country"] = this.formItem1.country;
-                    params["phone"] = this.formItem1.phoneNumber;
-                    api = "/uc/mobile/reset/code";
-                }
-                if (tab === 'key2') {
-                    this.formItem2.loading = true;
-                    params["account"] = this.formItem2.email;
-                    api = "/uc/email/reset/code";
-                }
-                this.$http.post(this.host + api, params).then(response => {
+                this.formItem2.loading = true;
+                params["account"] = this.formItem2.email;
+                this.$http.post(this.host + this.api.uc.resetEmailCode, params).then(response => {
                     let status = response.data;
                     if (status.code !== 0) {
                         //alert('发送失败：' + status.message);
@@ -228,33 +210,15 @@
             handleSubmit(name) {
                 this.$refs[name].validate((valid) => {
                     if (valid) {
-                        let tab = this.tab;
                         let params = {};
-                        let api;
-                        if (tab === 'key1') {
-                            /*params["country"] = this.formItem1.country;
-                            //params["countryCode"] = this.formItem1.countryCode;
-                            params["phone"] = this.formItem1.phoneNumber;
-                            params["username"] = this.formItem1.username;*/
-                            params["account"] = this.formItem1.phoneNumber;
-                            params["code"] = this.formItem1.noteCode;
-                            params["password"] = this.formItem1.password;
-                            params["mode"] = 0;
+                        /*params["country"] = this.formItem2.country;
+                        params["username"] = this.formItem2.username;*/
+                        params["account"] = this.formItem2.email;
+                        params["code"] = this.formItem2.emailCode;
+                        params["password"] = this.formItem2.password;
+                        params["mode"] = 1;
 
-                            api = "/uc/reset/login/password";
-                        }
-                        if (tab === 'key2') {
-                            /*params["country"] = this.formItem2.country;
-                            params["username"] = this.formItem2.username;*/
-                            params["account"] = this.formItem2.email;
-                            params["code"] = this.formItem2.emailCode;
-                            params["password"] = this.formItem2.password;
-                            params["mode"] = 1;
-
-                            api = "/uc/reset/login/password";
-                        }
-
-                        this.$http.post(this.host + api, params).then(response => {
+                        this.$http.post(this.host + this.api.uc.resetLoginPassword, params).then(response => {
                             let status = response.data;
                             if (status.code !== 0) {
                                 //alert('注册失败：' + status.message);

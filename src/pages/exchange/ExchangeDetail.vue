@@ -539,7 +539,7 @@
              * 获取人民币价格
              */
             getCNYRate() {
-                this.$http.get(this.host + "/uc/coin/cny-rate/"+
+                this.$http.get(this.host + this.api.uc.cnyrate +
                     this.currentCoin.base).then(response => {
                     var resp = response.body;
                     this.CNYPrice = resp.data||1;

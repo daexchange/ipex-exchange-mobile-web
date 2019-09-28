@@ -144,8 +144,7 @@
                 this.$refs[name].resetFields();
             },
             getCountryList() {
-                let api = '/uc/support/country';
-                this.$http.post(this.host + api).then(response => {
+                this.$http.post(this.host + this.api.common.area).then(response => {
                     let countryList = response.data.data;
                     this.countryList = countryList;
                 })
@@ -154,19 +153,9 @@
                 //this.initGtCaptcha();
                 let tab = this.tab;
                 let params = {};
-                let api;
-                if (tab === 'key1') {
-                    this.formItem1.loading = true;
-                    params["country"] = this.formItem1.country;
-                    params["phone"] = this.formItem1.phoneNumber;
-                    api = "/uc/mobile/code";
-                }
-                if (tab === 'key2') {
-                    this.formItem2.loading = true;
-                    params["email"] = this.formItem2.email;
-                    api = "/uc/email/code";
-                }
-                this.$http.post(this.host + api, params).then(response => {
+                this.formItem2.loading = true;
+                params["email"] = this.formItem2.email;
+                this.$http.post(this.host + this.api.uc.emailcode, params).then(response => {
                     let status = response.data;
                     if (status.code !== 0) {
                         //alert('发送失败：' + status.message);
@@ -247,41 +236,21 @@
                         let tab = this.tab;
                         let params = {};
                         let api;
-                        if (tab === 'key1') {
-                            if (this.formItem1.single) {
-                                params["country"] = this.formItem1.country;
-                                //params["countryCode"] = this.formItem1.countryCode;
-                                params["phone"] = this.formItem1.phoneNumber;
-                                params["code"] = this.formItem1.noteCode;
-                                params["username"] = this.formItem1.username;
-                                params["password"] = this.formItem1.password;
-
-                                api = "/uc/register/phone";
-                            } else {
-                                this.title = '请阅读并同意《用户协议》';
-                                this.errorMsg(this.title);
-                                return;
-                            }
-                        }
-                        if (tab === 'key2') {
-                            if (this.formItem2.single) {
-                                // params["country"] = this.formItem2.country;
-                                params["email"] = this.formItem2.email;
-                                params["code"] = this.formItem2.emailCode;
-                                // params["username"] = this.formItem2.username;
-                                params["password"] = this.formItem2.password;
-
-                                api = "/uc/register/email";
-                            } else {
-                                this.title = '请阅读并同意《用户协议》';
-                                this.errorMsg(this.title);
-                                return;
-                            }
+                        if (this.formItem2.single) {
+                            // params["country"] = this.formItem2.country;
+                            params["email"] = this.formItem2.email;
+                            params["code"] = this.formItem2.emailCode;
+                            // params["username"] = this.formItem2.username;
+                            params["password"] = this.formItem2.password;
+                        } else {
+                            this.title = '请阅读并同意《用户协议》';
+                            this.errorMsg(this.title);
+                            return;
                         }
                         params["ticket"] = this.ticket;
                         params["randStr"] = this.randStr;
 
-                        this.$http.post(this.host + api, params).then(response => {
+                        this.$http.post(this.host + this.api.uc.registeremail, params).then(response => {
                             let status = response.data;
                             if (status.code !== 0) {
                                 //alert('注册失败：' + status.message);

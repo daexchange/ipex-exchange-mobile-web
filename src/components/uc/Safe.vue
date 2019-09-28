@@ -740,8 +740,7 @@ export default {
   },
   methods: {
       getCountryList() {
-          let api = '/uc/support/country';
-          this.$http.post(this.host + api).then(response => {
+          this.$http.post(this.host + this.api.common.area).then(response => {
               let countryList = response.data.data;
               console.log(countryList);
               this.countryList = countryList;
@@ -830,7 +829,7 @@ export default {
         param["idCardBack"] = this.imgNext;
         param["handHeldIdCard"] = this.imgLast;
         this.$http
-          .post(this.host + "/uc/approve/real/name", param)
+          .post(this.host + this.api.uc.approverealname, param)
           .then(response => {
             var resp = response.body;
             if (resp.code == 0) {
@@ -851,7 +850,7 @@ export default {
         param["code"] = this.formValidate2.vailCode1;
         param["password"] = this.formValidate2.password;
         this.$http
-          .post(this.host + "/uc/approve/bind/email", param)
+          .post(this.host + this.api.uc.approvebindemail, param)
           .then(response => {
             var resp = response.body;
             if (resp.code == 0) {
@@ -889,7 +888,7 @@ export default {
         param["newPassword"] = this.formValidate4.newPw;
         param["code"] = this.formValidate4.vailCode3;
         this.$http
-          .post(this.host + "/uc/approve/update/password", param)
+          .post(this.host + this.api.uc.approveupdatepassword, param)
           .then(response => {
             var resp = response.body;
             if (resp.code == 0) {
@@ -916,7 +915,7 @@ export default {
         param["newPassword"] = this.formValidate5.newMPw;
         // param['code'] = this.formValidate5.vailCode5
         this.$http
-          .post(this.host + "/uc/approve/update/transaction/password", param)
+          .post(this.host + this.api.uc.updatetransactionpassword, param)
           .then(response => {
             var resp = response.body;
             if (resp.code == 0) {
@@ -934,7 +933,7 @@ export default {
         let param = {};
         param["jyPassword"] = this.formValidate7.pw7;
         this.$http
-          .post(this.host + "/uc/approve/transaction/password", param)
+          .post(this.host + this.api.uc.approvetransactionpassword, param)
           .then(response => {
             var resp = response.body;
             if (resp.code == 0) {
@@ -952,7 +951,7 @@ export default {
         param["newPassword"] = this.formValidate8.newMPw8;
         param["code"] = this.formValidate8.vailCode5;
         this.$http
-          .post(this.host + "/uc/approve/reset/transaction/password", param)
+          .post(this.host + this.api.uc.resettransactionpassword, param)
           .then(response => {
             var resp = response.body;
             if (resp.code == 0) {
@@ -988,7 +987,7 @@ export default {
         if (this.formValidate2.mail) {
           //获取邮箱code
           this.$http
-            .post(this.host + "/uc/bind/email/code", {
+            .post(this.host + this.api.uc.bindemailcode, {
               email: this.formValidate2.mail
             })
             .then(response => {
@@ -1037,7 +1036,7 @@ export default {
       } else if (index == 3) {
           // 登录密码获取邮箱code
           this.$http
-              .post(this.host + "/uc/email/update/password/code")
+              .post(this.host + this.api.uc.emailupdatepasswordcode)
               .then(response =>{
                   var resp = response.body;
                   if (resp.code == 0) {
@@ -1075,7 +1074,7 @@ export default {
         //资金密码获取手机code
         this.$http
           // .post(this.host + "/uc/mobile/transaction/code")
-            .post(this.host + "/uc/email/transaction/code")
+            .post(this.host + this.api.uc.emailtransactioncode)
           .then(response => {
             var resp = response.body;
             if (resp.code == 0) {
@@ -1097,7 +1096,7 @@ export default {
       //获取个人安全信息
       var self = this;
       this.$http
-        .post(this.host + "/uc/approve/security/setting")
+        .post(this.host + this.api.uc.securitySetting)
         .then(response => {
           var resp = response.body;
           if (resp.code == 0) {

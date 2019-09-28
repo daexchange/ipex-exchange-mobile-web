@@ -8,6 +8,7 @@ export default {
         checkLogin: '/uc/uc/check/login',
         register: '/uc/uc/register',
         wallet: '/uc/uc/asset/wallet/',
+        cnyrate: '/uc/uc/coin/cny-rate/',
         captcha: '/uc/uc/start/captcha',
         advertise: "/uc/uc/ancillary/system/advertise",
         identification: '/uc/uc/approve/certified/business/status', //商家认证
@@ -21,6 +22,21 @@ export default {
         withdrawrecord: '/uc/uc/withdraw/record',
         withdrawapplycode: '/uc/uc/withdraw/apply/code',
         emailwithdrawcode: '/uc/uc/email/withdraw/code',
+        resetEmailCode: "/uc/uc/reset/email/code",
+        resetLoginPassword: "/uc/uc/reset/login/password",
+        accountSetting: "/uc/uc/approve/account/setting",
+        emailcode: '/uc/uc/email/code',
+        registeremail: '/uc/uc/register/email',
+        approverealname: '/uc/uc/approve/real/name',
+        approvebindemail: '/uc/uc/approve/bind/email',
+        approveupdatepassword: '/uc/uc/approve/update/password',
+        updatetransactionpassword: '/uc/uc/approve/update/transaction/password',
+        approvetransactionpassword: '/uc/uc/approve/transaction/password',
+        resettransactionpassword: '/uc/uc/approve/reset/transaction/password',
+        bindemailcode: '/uc/uc/bind/email/code',
+        emailupdatepasswordcode:"/uc/uc/email/update/password/code",
+        emailtransactioncode: '/uc/uc/email/transaction/code',
+        securitySetting: "/uc/uc/approve/security/setting",
     },
     market: { //币币交易行情接口
         // ws: '/market/market-ws',
@@ -51,6 +67,8 @@ export default {
         coin: '/otc/otc/coin/all', //查询支持的币种
         advertise: '/otc/otc/advertise/page-by-unit', //获取广告
         createAd: '/uc/uc/ad/create', //创建广告
-        adDetail: '/otc/otc/advertise/detail'
+        adDetail: '/otc/otc/advertise/detail',
+        create: "/otc/otc/advertise/create",
+        update: "/otc/otc/advertise/update",
     }
 }

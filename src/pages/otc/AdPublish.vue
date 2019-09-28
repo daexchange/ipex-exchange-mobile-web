@@ -464,7 +464,7 @@ export default {
           isIdparams["autoword"] = this.form.autoword;
           if (this.isId) {
             this.$http
-              .post(this.host + "/otc/advertise/update", isIdparams)
+              .post(this.host + this.api.otc.update, isIdparams)
               .then(response => {
                 var resp = response.body;
                 if (resp.code == 0) {
@@ -482,7 +482,7 @@ export default {
           } else {
             //创建
             this.$http
-              .post(this.host + "/otc/advertise/create", params)
+              .post(this.host + this.api.otc.create, params)
               .then(response => {
                 var resp = response.body;
                 if (resp.code == 0) {
@@ -530,7 +530,7 @@ export default {
       }
     },
     getAreas() {
-      this.$http.post(this.host + "/uc/support/country").then(response => {
+      this.$http.post(this.host + this.api.common.area).then(response => {
         var resp = response.body;
         this.areas = resp.data;
         this.form.country = this.areas[0].zhName;
@@ -575,7 +575,7 @@ export default {
       //获取个人账户信息
       let self = this;
       this.$http
-        .post(this.host + "/uc/approve/account/setting")
+        .post(this.host + this.api.uc.accountSetting)
         .then(response => {
           var resp = response.body;
           if (resp.code == 0) {
@@ -605,7 +605,7 @@ export default {
     getDetailAd() {
       this.isId = true;
       this.$http
-        .post(this.host + "/otc/advertise/detail", { id: this.$route.query.id })
+        .post(this.host + this.api.otc.adDetail, { id: this.$route.query.id })
         .then(response => {
           var resp = response.body;
           if (resp.code == 0) {
@@ -683,7 +683,7 @@ export default {
     this.getAreas();
     let lv = (1 + this.form.premisePrice / 100).toFixed(4);
     //获取币种
-    this.$http.post(this.host + "/otc/coin/all").then(response => {
+    this.$http.post(this.host + this.api.otc.coin).then(response => {
       var resp = response.body;
       if (resp.code == 0) {
         this.coinList = resp.data;
