@@ -12,7 +12,7 @@
             <div class="content">
                 <span v-html="data.info.content"></span>
             </div>
-            <div class="nav-bottom">
+            <!--<div class="nav-bottom">
                 <div class="left" v-if="data.back">
                     <router-link class="link" :to="'../notice/index?id='+data.back.id">
                         <上一篇 <p>{{data.back.title}}</p>
@@ -23,7 +23,7 @@
                         <p>{{data.next.title}}</p>
                     </router-link>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
 </template>
@@ -73,12 +73,12 @@
                 //   }
                 // });
                 this.$http
-                    .post(this.host + "/uc/announcement/more", { id })
+                    .post(this.host + this.api.uc.announcement, { id })
                     .then(response => {
                         var result = response.body;
                         if (result.code == 0) {
-                            const data = result.data;
-                            this.data = data;
+                            this.data = result.data;
+                            this.data.info = this.data.content[0];
                             // this.title = result.data.title;
                             // this.time = result.data.createTime;
                             // this.content = result.data.content;

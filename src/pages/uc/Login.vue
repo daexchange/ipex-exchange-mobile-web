@@ -23,7 +23,7 @@
                     <Button :loading="loading" slot="append" v-else v-show="!show">
                         <span>{{$t('uc.regist.sendingcode')}}</span>
                     </Button>
-                    <Button :loading="loading" slot="append" v-show="show">
+                    <Button :loading="!loading" slot="append" v-show="show">
                         <span>{{ count }}s 后获取验证码</span>
                     </Button>
                 </Input>
