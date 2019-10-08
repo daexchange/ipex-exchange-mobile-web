@@ -102,7 +102,7 @@
         },
         mounted() {
             if (!this.isMobile()) {
-                window.location.href = "https://ipex.ipcom.io/";
+                window.location.href = "https://ipex.turbochain.ai/";
             }
         },
         created: function () {
