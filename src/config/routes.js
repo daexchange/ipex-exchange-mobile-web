@@ -63,6 +63,9 @@ import ExchangeDetail from '../pages/exchange/ExchangeDetail'
 import SymbolList from '../pages/exchange/SymbolList'
 import Withdrawal from  '../components/uc/Withdrawal'
 import Trans from '../components/uc/TransferAccounts'
+import Safe from '../components/uc/SafeSetting'
+import Authentication from '../components/uc/Authentication'
+import Account from '../components/uc/AccountSetting'
 
 // 币理财
 // import Blc from '../pages/blc/Bilicai'
@@ -106,6 +109,9 @@ export default [
     { path: '/symbol', component: SymbolList },
     { path: '/withdrawal', component: Withdrawal },
     { path: '/transfer', component: Trans },
+    { path: '/safe', component: Safe },
+    { path: '/goAuthentication', component: Authentication },
+    { path: '/account', component: Account },
     {
         path: '/create',
         component: CreateAd

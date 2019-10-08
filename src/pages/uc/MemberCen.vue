@@ -3,8 +3,8 @@
         <div class="wrapper">
             <van-collapse v-model="activeNames" border="false">
                 <van-collapse-item title="账户管理" name="1" size="large" class="collapseItem">
-                    <van-cell title="安全设置" is-link to="index"/>
-                    <van-cell title="账户设置" is-link to="index"/>
+                    <van-cell title="安全设置" is-link to="/safe"/>
+                    <van-cell title="账户设置" is-link to="/account"/>
                 </van-collapse-item>
                 <van-collapse-item title="币币账户" name="2" size="large">
                     <van-cell title="个人资产" is-link to="/exchangeassets" />
