@@ -37,6 +37,10 @@ export default {
         emailupdatepasswordcode:"/uc/uc/email/update/password/code",
         emailtransactioncode: '/uc/uc/email/transaction/code',
         securitySetting: "/uc/uc/approve/security/setting",
+        exangeassettransfer: '/uc/uc/exange/asset/transfer',
+        exangeassetwallet: '/uc/uc/exange/asset/wallet',
+        transferotherrecordpage: '/uc/uc/transfer-other/record/page',
+        emailexangetransfercode: '/uc/uc/email/exange/transfer/code',
     },
     market: { //币币交易行情接口
         // ws: '/market/market-ws',

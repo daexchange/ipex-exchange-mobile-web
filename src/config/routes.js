@@ -49,7 +49,6 @@ import findPassword from "../pages/uc/findPassword"
 import userAgreement from '../pages/cms/UserAgreement'
 import legalcurrencymoney from '../components/uc/legalcurrencymoney'
 import legalcurrencyrecord from '../components/uc/legalcurrencyrecord'
-import transfer from '../components/uc/transfer'
 import CreateAd from '../pages/otc/CreateAd'
 import MyAdver from '../components/otc/MyAdver'
 import MyOrder from '../components/uc/MyOrders'
@@ -63,6 +62,7 @@ import ExchangeRecharge from '../components/uc/ExchangeRecharge'
 import ExchangeDetail from '../pages/exchange/ExchangeDetail'
 import SymbolList from '../pages/exchange/SymbolList'
 import Withdrawal from  '../components/uc/Withdrawal'
+import Trans from '../components/uc/TransferAccounts'
 
 // 币理财
 // import Blc from '../pages/blc/Bilicai'
@@ -105,6 +105,7 @@ export default [
     { path: '/detail/*', component: ExchangeDetail },
     { path: '/symbol', component: SymbolList },
     { path: '/withdrawal', component: Withdrawal },
+    { path: '/transfer', component: Trans },
     {
         path: '/create',
         component: CreateAd
@@ -197,10 +198,6 @@ export default [
                 path: 'legalcurrencyrecord',
                 component: legalcurrencyrecord
             },
-            {
-                path: 'transfer',
-                component: transfer
-            }
         ]
     },
     {
