@@ -2,10 +2,10 @@
     <div style="background-color: #192330">
         <div>
             <ButtonGroup style="margin: 20px 84px 10px 84px">
-                <Button type="primary" style="width: 104px">
+                <Button type="primary" @click="buyIn" style="width: 104px">
                     购买
                 </Button>
-                <Button type="primary" style="width: 104px">
+                <Button type="primary" @click="sellOut" style="width: 104px">
                     出售
                 </Button>
             </ButtonGroup>
@@ -35,7 +35,7 @@
         name: "OTCHome",
         data() {
             return {
-                pane: 'ETH',
+                pane: 'USDT',
                 price: '7.00',
                 range: 0.01,
                 updown: '',

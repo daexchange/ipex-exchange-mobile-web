@@ -11,21 +11,17 @@
                 <TabPane :label="$t('otc.buyin')" name="buy">-->
                     <div v-show="isBuyIn" class="table-responsive list-table">
                         <Table :no-data-text="$t('common.nodata')" :border="showBorder" :stripe="showStripe" :show-header="showHeader" :height="fixedHeader ? 250 : ''" :size="tableSize" :data="advertiment.ask.rows" :columns="advertiment.columns" :loading="loading" :disabled-hover="true"></Table>
-                        <div class="page_change">
-                            <div style="float: right;">
+                            <div style="float: right;margin: 10px">
                                 <Page v-if="advertiment.ask.totalElement > 0" :pageSize="advertiment.ask.pageNumber" :total="advertiment.ask.totalElement" :current="advertiment.ask.currentPage" @on-change="changePage"></Page>
                             </div>
-                        </div>
                     </div>
                 <!--</TabPane>-->
                 <!--<TabPane :label="$t('otc.sellout')" name="sell">-->
                     <div v-show="!isBuyIn" class="table-responsive list-table">
                         <Table :no-data-text="$t('common.nodata')" :border="showBorder" :stripe="showStripe" :show-header="showHeader" :height="fixedHeader ? 250 : ''" :size="tableSize" :data="advertiment.bid.rows" :columns="advertiment.columns" :loading="loading" :disabled-hover="true"></Table>
-                        <div class="page_change">
-                            <div style="float: right;">
+                        <div style="float: right;margin: 10px">
                                 <Page v-if="advertiment.bid.totalElement > 0" :pageSize="advertiment.bid.pageNumber" :total="advertiment.bid.totalElement" :current="advertiment.bid.currentPage" @on-change="changePage"></Page>
                             </div>
-                        </div>
                     </div>
                 <!--</TabPane>
             </Tabs>-->
@@ -977,7 +973,7 @@
                                                         }, 2000);
                                                     } else {
                                                         self.$router.push(
-                                                            "/otc/tradeInfo?tradeId=" + params.row.advertiseId
+                                                            "/otc/tradeDetail?tradeId=" + params.row.advertiseId
                                                         );
                                                     }
                                                 }

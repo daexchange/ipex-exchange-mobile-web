@@ -66,6 +66,7 @@ import Trans from '../components/uc/TransferAccounts'
 import Safe from '../components/uc/SafeSetting'
 import Authentication from '../components/uc/Authentication'
 import Account from '../components/uc/AccountSetting'
+import TradeDetail from '../pages/otc/TradeDetail'
 
 // 币理财
 // import Blc from '../pages/blc/Bilicai'
@@ -112,6 +113,11 @@ export default [
     { path: '/safe', component: Safe },
     { path: '/goAuthentication', component: Authentication },
     { path: '/account', component: Account },
+    {
+        name: 'tradeDetail',
+        path: '/otc/tradeDetail',
+        component: TradeDetail
+    },
     {
         path: '/create',
         component: CreateAd
@@ -205,11 +211,6 @@ export default [
                 component: legalcurrencyrecord
             },
         ]
-    },
-    {
-        name: 'tradeInfo',
-        path: '/otc/tradeInfo',
-        component: tradeInfo
     },
     {
         path: '/checkuser',

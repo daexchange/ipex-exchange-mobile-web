@@ -70,6 +70,7 @@ export default {
     otc: {
         coin: '/otc/otc/coin/all', //查询支持的币种
         advertise: '/otc/otc/advertise/page-by-unit', //获取广告
+        orderpre: "/otc/otc/order/pre",
         createAd: '/uc/uc/ad/create', //创建广告
         adDetail: '/otc/otc/advertise/detail',
         create: "/otc/otc/advertise/create",

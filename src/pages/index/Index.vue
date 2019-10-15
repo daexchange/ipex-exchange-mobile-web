@@ -55,7 +55,7 @@
               <router-link to="/exchange/btc_usdt"><img src="../../assets/images/homeicon-bibijiaoyi.svg" ><span>币币交易</span></router-link>
             </li>
             <li @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}">
-              <router-link to="/otc/trade/ETH"><img src="../../assets/images/homeicon-fabijiaoyi.svg" ><span>法币交易</span></router-link>
+              <router-link to="/otc/trade/USDT"><img src="../../assets/images/homeicon-fabijiaoyi.svg" ><span>法币交易</span></router-link>
             </li>
 		    <li @click="addClass(index)" :class="{'active':index==choseBtn,'ivu-btn-default':index!=choseBtn}">
               <router-link to="/create"><img src="../../assets/images/homeicon-fabuguanggao.svg" ><span>广告发布</span></router-link>
