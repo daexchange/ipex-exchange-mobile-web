@@ -969,7 +969,7 @@
                                                         //                                            } else if (!self.member.memberLevel) {
                                                         self.$Message.error(self.$t("otc.validate"));
                                                         setTimeout(() => {
-                                                            self.$router.push("/uc/safe");
+                                                            self.$router.push("/safe");
                                                         }, 2000);
                                                     } else {
                                                         self.$router.push(
