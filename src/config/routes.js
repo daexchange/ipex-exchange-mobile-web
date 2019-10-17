@@ -67,6 +67,7 @@ import Authentication from '../components/uc/Authentication'
 import Account from '../components/uc/AccountSetting'
 import TradeDetail from '../pages/otc/TradeDetail'
 import BusinessValidate from '../pages/uc/BusinessValidate'
+import ApplyBusiness from '../pages/uc/ApplyBusiness'
 
 // 币理财
 // import Blc from '../pages/blc/Bilicai'
@@ -113,7 +114,7 @@ export default [
     { path: '/safe', component: Safe },
     { path: '/goAuthentication', component: Authentication },
     { path: '/account', component: Account },
-    { path: '/businessVali', component: BusinessValidate },
+    { path: '/goApply', component: ApplyBusiness },
     {
         name: 'tradeDetail',
         path: '/otc/tradeDetail',
@@ -223,7 +224,7 @@ export default [
     },
     {
         path: '/identbusiness',
-        component: identbusiness
+        component: BusinessValidate
     },
     // {
     //     path: '/newhelp',
